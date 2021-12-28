@@ -1,0 +1,3 @@
+First 20 6 RedTeam 0 200
+First 17 12 RedTeam 1 200
+First 36 14 BlueTeam 0 200
