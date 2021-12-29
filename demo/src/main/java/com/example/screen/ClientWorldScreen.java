@@ -71,6 +71,7 @@ public class ClientWorldScreen implements Screen {
         try {
             // readChannel = SocketChannel.open();
             // readChannel.connect(new InetSocketAddress(8888));
+            world = new World();
             selector = Selector.open();
             byteBuffer = ByteBuffer.allocate(128);
             writeChannel = SocketChannel.open();
@@ -126,8 +127,11 @@ public class ClientWorldScreen implements Screen {
     public boolean readData(SocketChannel socketChannel) throws IOException{
         int res = socketChannel.read(byteBuffer);
         if(res > 0){
-            String process = bufToString(byteBuffer);
-            System.out.println(socketChannel.getLocalAddress()+ ":" + process);
+            List<String> process = bufToString(byteBuffer);
+            for(int i = 0; i < process.size(); i++){
+                System.out.println(socketChannel.getLocalAddress()+ ":" + process.get(i));
+                handleProcess(process.get(i));
+            }
         }
         else if(res == -1){
             return false;
@@ -135,21 +139,26 @@ public class ClientWorldScreen implements Screen {
         return true;
     }
 
-    public String bufToString(ByteBuffer buf){
+    public List<String> bufToString(ByteBuffer buf){
+        List<String> process = new ArrayList<>();
+
         buf.flip();
         Charset charset = Charset.forName("utf-8");
         CharBuffer charBuffer = charset.decode(buf);
         String temp = charBuffer.toString();
-        // System.out.println("temp:" + temp);
+        
         String[] Process = temp.split("\n");
-        if(Process.length > 0){
-            String process = Process[0];
-            buf.position(process.length());
-            // buf.compact();
-            buf.clear();
-            return process;
+        // System.out.println("length:" + Process.length + "\ntemp:" + temp);
+        int index = 0;
+        for(int i = 0; i < Process.length; i++){
+            if(temp.charAt(index + Process[i].length()) == '\n'){
+                process.add(Process[i]);
+                index += Process[i].length()+1;
+            }
         }
-        return "";
+        buf.position(index);
+        buf.compact();
+        return process;
     } 
 
     public void handleSocketByThread(){
@@ -616,6 +625,136 @@ public class ClientWorldScreen implements Screen {
         finally{
             if(outputStream != null)
                 outputStream.close();
+        }
+    }
+
+    private void handleProcess(String process){
+        // System.out.println(process);
+        String[] Process = process.split(" ");
+        if(Process[0].equals("Create")){
+            this.handleCreate(Process);
+        }
+        else if(Process[0].equals("Move")){
+            this.handleMove(Process);
+        }
+        else if(Process[0].equals("Attack")){
+            this.handleAttack(Process);
+        }
+        else if(Process[0].equals("Dead")){
+            this.handleDead(Process);
+        }
+    }    
+
+    private void handleCreate(String[] Process){
+        if(Process[2].equals(CreatureAttribute.FIRST)){
+            if(Process[1].equals(CreatureAttribute.REDTEAM)){
+                First temp = new First(world, Integer.valueOf(Process[4]), Integer.valueOf(Process[5]), CreatureAttribute.REDTEAM, Integer.valueOf(Process[3]), true);
+                world.addRed(temp);
+            }
+            else{
+                First temp = new First(world, Integer.valueOf(Process[4]), Integer.valueOf(Process[5]), CreatureAttribute.BLUETEAM, Integer.valueOf(Process[3]), true);
+                world.addBlue(temp);
+            }
+        }
+        else if(Process[2].equals(CreatureAttribute.SECOND)){
+            if(Process[1].equals(CreatureAttribute.REDTEAM)){
+                Second temp = new Second(world, Integer.valueOf(Process[4]), Integer.valueOf(Process[5]), CreatureAttribute.REDTEAM, Integer.valueOf(Process[3]), true);
+                world.addRed(temp);
+            }
+            else{
+                Second temp = new Second(world, Integer.valueOf(Process[4]), Integer.valueOf(Process[5]), CreatureAttribute.BLUETEAM, Integer.valueOf(Process[3]), true);
+                world.addBlue(temp);
+            }
+        }
+        else if(Process[2].equals(CreatureAttribute.BULLET)){
+            if(Process[1].equals(CreatureAttribute.REDTEAM)){
+                Thing owner = world.findInRed(Integer.valueOf(Process[8]));
+                Bullet temp = new Bullet(owner, Integer.valueOf(Process[4]), Integer.valueOf(Process[5]), Integer.valueOf(Process[3]));
+                owner.addBullet(temp);
+            }
+            else{
+                Thing owner = world.findInBlue(Integer.valueOf(Process[8]));
+                Bullet temp = new Bullet(owner, Integer.valueOf(Process[4]), Integer.valueOf(Process[5]), Integer.valueOf(Process[3]));
+                owner.addBullet(temp);
+            }
+        }
+    }
+
+    private void handleMove(String[] Process){
+        // System.out.println("world");
+        if(Process[2].equals(CreatureAttribute.BULLET) == false){
+            if(Process[1].equals(CreatureAttribute.REDTEAM)){
+                Thing temp = world.findInRed(Integer.valueOf(Process[3]));
+                if(temp != null)
+                    temp.moveReplay(Integer.valueOf(Process[4]), Integer.valueOf(Process[5]));
+            }
+            else{
+                Thing temp = world.findInBlue(Integer.valueOf(Process[3]));
+                if(temp != null)
+                    temp.moveReplay(Integer.valueOf(Process[4]), Integer.valueOf(Process[5]));
+            }
+        }
+        else{
+            if(Process[1].equals(CreatureAttribute.REDTEAM)){
+                Thing temp = world.findInRed(Integer.valueOf(Process[6])).findBullet(Integer.valueOf(Process[3]));
+                if(temp != null){
+                    temp.setxPos(temp.getX()+Integer.valueOf(Process[4]));
+                    temp.setyPos(temp.getY()+Integer.valueOf(Process[5]));
+                }
+            }
+            else{
+                Thing temp = world.findInBlue(Integer.valueOf(Process[6])).findBullet(Integer.valueOf(Process[3]));
+                if(temp != null){
+                    temp.setxPos(temp.getX()+Integer.valueOf(Process[4]));
+                    temp.setyPos(temp.getY()+Integer.valueOf(Process[5]));
+                }
+            }
+        }
+    }
+
+    private void handleAttack(String[] Process){
+        if(Process[2].equals(CreatureAttribute.SECOND) == false){
+            if(Process[2].equals(CreatureAttribute.BULLET)){
+                if(Process[1].equals(CreatureAttribute.REDTEAM)){
+                    Thing attacker = world.findInRed(Integer.valueOf(Process[4])).findBullet(Integer.valueOf(Process[3]));
+                    Thing victim = world.findInBlue(Integer.valueOf(Process[7]));
+                    if(attacker != null && victim != null)
+                        attacker.Attack(victim);
+                }
+                else{
+                    Thing attacker = world.findInBlue(Integer.valueOf(Process[4])).findBullet(Integer.valueOf(Process[3]));
+                    Thing victim = world.findInRed(Integer.valueOf(Process[7]));
+                    if(attacker != null && victim != null)
+                        attacker.Attack(victim);
+                }
+            }
+            else{
+                if(Process[1].equals(CreatureAttribute.REDTEAM)){
+                    Thing attacker = world.findInRed(Integer.valueOf(Process[3]));
+                    Thing victim = world.findInBlue(Integer.valueOf(Process[6]));
+                    if(attacker != null && victim != null)
+                        attacker.Attack(victim);
+                }
+                else{
+                    Thing attacker = world.findInRed(Integer.valueOf(Process[3]));
+                    Thing victim = world.findInBlue(Integer.valueOf(Process[6]));
+                    if(attacker != null && victim != null)
+                        attacker.Attack(victim);
+                }
+            }
+        }
+    }
+
+    private void handleDead(String[] Process){
+        if(Process[2].equals(CreatureAttribute.BULLET)){
+            if(Process[1].equals(CreatureAttribute.REDTEAM)){
+                Thing temp = world.findInRed(Integer.valueOf(Process[4])).findBullet(Integer.valueOf(Process[3]));
+                temp.beDead();
+            }
+            else{
+                Thing temp = world.findInBlue(Integer.valueOf(Process[4])).findBullet(Integer.valueOf(Process[3]));
+                temp.beDead();
+            }
         }
     }
 }

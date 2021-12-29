@@ -11,7 +11,9 @@ import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import com.example.screen.ServerWorldScreen;
 
@@ -98,7 +100,13 @@ public class Server {
                         if(socketChannel != null && socketChannel.isOpen()){
                             readData(socketChannel);
                         }
-                        writeToClient("Hello client");
+                        if(client1 != null && client2 != null){
+                            serverWorldScreen.makeTeam();
+                            serverWorldScreen.gameStart();
+                        }
+                        // serverWorldScreen.makeTeam();
+                        // serverWorldScreen.gameStart();
+                        // writeToClient("Hello client");
                     }
                     it.remove();
                 }
@@ -113,8 +121,10 @@ public class Server {
     public boolean readData(SocketChannel socketChannel) throws IOException{
         int res = socketChannel.read(byteBuffer);
         if(res > 0){
-            String process = bufToString(byteBuffer);
-            System.out.println(socketChannel.getRemoteAddress()+ ":" + process);
+            List<String> process = bufToString(byteBuffer);
+            for(int i = 0; i < process.size(); i++){
+                System.out.println(socketChannel.getLocalAddress()+ ":" + process.get(i));
+            }
         }
         else if(res == -1){
             socketChannel.close();
@@ -123,40 +133,45 @@ public class Server {
         return true;
     }
 
-    public String bufToString(ByteBuffer buf){
+    public List<String> bufToString(ByteBuffer buf){
+        List<String> process = new ArrayList<>();
+
         buf.flip();
         Charset charset = Charset.forName("utf-8");
         CharBuffer charBuffer = charset.decode(buf);
         String temp = charBuffer.toString();
+        
         String[] Process = temp.split("\n");
-        if(Process.length > 0){
-            String process = Process[0];
-            buf.position(process.length());
-            // System.out.println("length: " + process.length());
-            // buf.compact();
-            buf.clear();
-            // charBuffer = charset.decode(buf);
-            // temp = charBuffer.toString();
-            // System.out.print("temp: " + temp);
-            return process;
+        // System.out.println("length:" + Process.length + "\ntemp:" + temp);
+        int index = 0;
+        for(int i = 0; i < Process.length; i++){
+            if(temp.charAt(index + Process[i].length()) == '\n'){
+                process.add(Process[i]);
+                index += Process[i].length()+1;
+            }
         }
-        return "";
+        buf.position(index);
+        buf.compact();
+        return process;
     } 
+
 
     public void writeToClient(String t){
         try{
+            ByteBuffer buffer;
             t = t + "\n";
             if(client1 != null && client1.isOpen()){
-                ByteBuffer buffer = ByteBuffer.wrap(t.getBytes("utf-8"));
-                // Charset charset = Charset.forName("utf-8");
-                // CharBuffer charBuffer = charset.decode(buffer);
-                // String temp = charBuffer.toString();
-                // System.out.print("writeToClient1: " + temp);
+                buffer = ByteBuffer.wrap(t.getBytes("utf-8"));
+                Charset charset = Charset.forName("utf-8");
+                CharBuffer charBuffer = charset.decode(buffer);
+                String temp = charBuffer.toString();
+                System.out.print("writeToClient1: " + temp);
+                buffer = ByteBuffer.wrap(t.getBytes("utf-8"));
                 client1.write(buffer);
             }
             // ByteBuffer buffer = ByteBuffer.wrap(t.getBytes("utf-8"));
             if(client2 != null && client2.isOpen()){
-                ByteBuffer buffer = ByteBuffer.wrap(t.getBytes("utf-8"));
+                buffer = ByteBuffer.wrap(t.getBytes("utf-8"));
                 // Charset charset = Charset.forName("utf-8");
                 // CharBuffer charBuffer = charset.decode(buffer);
                 // String temp = charBuffer.toString();

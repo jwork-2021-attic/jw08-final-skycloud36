@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.example.Server;
 import com.example.screen.ProcessScreen;
 import com.example.thing.*;
 
@@ -26,6 +27,8 @@ public class World {
     private List<Creature> blueTeam;
     private List<Creature> redTeam;
     private List<String> process;
+
+    private Server server = null;
 
     public World() {
         World.WIDTH = 80;
@@ -91,6 +94,43 @@ public class World {
             // ps = new ProcessScreen(this);
             this.processByThread();
         }
+    }
+
+    public World(boolean record, Server server){
+        World.WIDTH = 80;
+        World.HEIGHT = 40;
+        if (tiles == null) {
+            tiles = new Tile[WIDTH][HEIGHT]; 
+        }
+
+        if (background == null){
+            background = new Thing[WIDTH][HEIGHT];
+        }
+
+        maze = new MazeGenerator(WIDTH, HEIGHT);
+        maze.generateMaze();
+
+        for (int i = 0; i < WIDTH; i++) {
+            for (int j = 0; j < HEIGHT; j++) {
+                tiles[i][j] = new Tile<>(i, j);
+                // int t = maze.PassByLoc(i, j);
+                Thing t = getThingByrank(maze.PassByLoc(i, j));
+                background[i][j] = t;
+                tiles[i][j].setThing(t);
+            }
+        }
+
+        blueTeam = new ArrayList<>();
+        redTeam = new ArrayList<>();
+        process = new ArrayList<>();
+        this.server = server;
+
+        this.record = record;
+        this.serverworld = true;
+        // if(record == true){
+        //     // ps = new ProcessScreen(this);
+        //     this.processByThread();
+        // }
     }
 
     public World(String file) throws IOException {
@@ -272,11 +312,20 @@ public class World {
         }
         if(ps != null)
             ps.addProcess(process);
+        if(server != null){
+            server.writeToClient(process);
+        }
     }
 
     private boolean record = false;
 
     public boolean ifRecord(){
         return this.record;
+    }
+
+    private boolean serverworld = false;
+
+    public boolean ifServer(){
+        return this.serverworld;
     }
 }

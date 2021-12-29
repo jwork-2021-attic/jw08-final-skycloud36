@@ -8,6 +8,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import com.example.maze.World;
+import com.example.screen.ServerWorldScreen;
 import com.example.screen.WorldScreen;
 
 import com.example.asciiPanel.AsciiPanel;
@@ -242,12 +243,25 @@ public class First extends Creature{
             }
             @Override
             public void run(){
-                if(WorldScreen.gameStart == false || WorldScreen.gamePause == true || first.selected == true){
+                if(first.world.ifServer() && (ServerWorldScreen.gameStart == false|| 
+                ServerWorldScreen.gamePause == true || first.selected == true)){
                     synchronized(first){
                         try{
                             first.wait();
                         }
-                        catch(Exception r){
+                        catch(InterruptedException r){
+                            r.printStackTrace();
+                        }   
+                    }
+                }
+                else if((first.world.ifServer() == false )&& (WorldScreen.gameStart == false || 
+                WorldScreen.gamePause == true || first.selected == true)){
+                    synchronized(first){
+                        try{
+                            first.wait();
+                        }
+                        catch(InterruptedException r){
+                            r.printStackTrace();
                         }   
                     }
                 }

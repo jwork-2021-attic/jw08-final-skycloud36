@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.example.maze.World;
+import com.example.screen.ServerWorldScreen;
 import com.example.screen.WorldScreen;
 
 import com.example.asciiPanel.AsciiPanel;
@@ -316,13 +317,24 @@ public class Second extends Creature {
             @Override
             public void run() {
                 synchronized (this.second.bullets) {
-                    if (WorldScreen.gameStart == false || WorldScreen.gamePause == true) {
-                        synchronized (this.second) {
-                            try {
+                    if(this.second.world.ifServer() && (ServerWorldScreen.gameStart == false|| 
+                    ServerWorldScreen.gamePause == true || second.selected == true)){
+                        synchronized(this.second){
+                            try{
                                 this.second.wait();
-                            } catch (InterruptedException i) {
-                                System.out.println(i);
                             }
+                            catch(InterruptedException r){
+                            }   
+                        }
+                    }
+                    else if((this.second.world.ifServer() == false)&& (WorldScreen.gameStart == false || 
+                    WorldScreen.gamePause == true || this.second.selected == true)){
+                        synchronized(second){
+                            try{
+                                this.second.wait();
+                            }
+                            catch(InterruptedException r){
+                            }   
                         }
                     }
                     // Iterator<Bullet> it = second.bullets.iterator();
@@ -363,14 +375,26 @@ public class Second extends Creature {
 
             @Override
             public void run() {
-                if (WorldScreen.gameStart == false || WorldScreen.gamePause == true || this.second.selected == true) {
-                    synchronized (this.second) {
-                        try {
+                if(this.second.world.ifServer() && (ServerWorldScreen.gameStart == false|| 
+                ServerWorldScreen.gamePause == true || second.selected == true)){
+                    synchronized(this.second){
+                        try{
                             this.second.wait();
-                        } catch (Exception r) {
                         }
+                        catch(InterruptedException r){
+                        }   
                     }
-                } else {
+                }
+                else if ((this.second.world.ifServer() == false)&& (WorldScreen.gameStart == false || 
+                WorldScreen.gamePause == true || this.second.selected == true)) {
+                        synchronized (this.second) {
+                            try {
+                                this.second.wait();
+                            } catch (Exception r) {
+                            }
+                        }
+                    } 
+                else {
                     if (this.second.ifExist()) {
                         this.second.moveByAI();
                     } else {
