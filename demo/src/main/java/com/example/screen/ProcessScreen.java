@@ -114,6 +114,7 @@ public class ProcessScreen extends JFrame{
         @Override 
         public void windowClosing(WindowEvent e){
             // ps.saveByThread();
+            
             System.exit(0);
         }
     }

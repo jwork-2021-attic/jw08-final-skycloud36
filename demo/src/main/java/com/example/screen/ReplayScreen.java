@@ -6,9 +6,15 @@ import java.awt.event.MouseEvent;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.channels.FileChannel;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.Key;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -38,15 +44,23 @@ public class ReplayScreen implements Screen {
     // Player player;
     int buttonIndex = 0;
     BufferedReader inputStream;
-    
+    List<String> Process;
+    int pindex; 
+    boolean replayAuto = false;
+
     public ReplayScreen(){
         try {
             this.noFile = false;
             world = new World("GameMap.txt");
-            inputStream = new BufferedReader(new FileReader("GameProcess.txt"));
-            if(inputStream == null){
-                this.noFile = true;
-            }
+            // inputStream = new BufferedReader(new FileReader("GameProcess.txt"));
+            Path path = Paths.get("GameProcess.txt");
+            Process = Files.readAllLines(path);  
+            pindex = 0;
+            replayAuto = false;
+            handleByThread();
+            // if(inputStream == null){
+            //     this.noFile = true;
+            // }
         } catch (IOException e) {
             e.printStackTrace();
         }  
@@ -80,15 +94,69 @@ public class ReplayScreen implements Screen {
         try{
             switch(key.getKeyCode()){
                 case KeyEvent.VK_SPACE:
-                    String process = inputStream.readLine();
+                    this.replayAuto = false;
+                    // String process = inputStream.readLine();
+                    String process = Process.get(pindex);
+                    if(pindex < Process.size() - 1)
+                        pindex++;
                     if(process != null)
                         this.handleProcess(process);
+                    
+                    // handleByThread();
+                    break;
+                case KeyEvent.VK_ENTER:
+                    if(replayAuto == false){
+                        replayAuto = true;
+                        // notifyAll();
+                    }
+                    break;
             }
         }
-        catch(IOException e){
+        catch(Exception e){
             e.printStackTrace();
         }
         return this;
+    }
+
+    private void handleByThread(){
+        class Myrun implements Runnable{
+            public Myrun(){
+            }
+
+            @Override
+            public void run() {
+                while(true){
+                    try {
+                        TimeUnit.MILLISECONDS.sleep(20);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    while(pindex < Process.size() -1 && replayAuto == true){
+                        // System.out.println("m");
+                        String process = Process.get(pindex);
+                        // System.out.println(process);
+                        if(pindex < Process.size())
+                            // System.out.println(pindex);
+                            pindex++;
+                        if(process != null)
+                            handleProcess(process);
+                        try {
+                            TimeUnit.MILLISECONDS.sleep(2);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if(pindex >= Process.size()){
+                        break;
+                    }
+                }
+            }
+        };
+
+        Myrun myrun = new Myrun();
+        Thread thread = new Thread(myrun);
+        thread.start();
+
     }
 
     private void handleProcess(String process){

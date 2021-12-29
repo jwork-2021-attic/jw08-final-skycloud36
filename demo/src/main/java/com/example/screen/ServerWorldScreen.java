@@ -23,10 +23,10 @@ import com.example.thing.*;
 
 // import org.w3c.dom.events.MouseEvent;
 import com.example.maze.World;
-
+import com.example.Server;
 import com.example.asciiPanel.AsciiPanel;
 
-public class WorldScreen implements Screen {
+public class ServerWorldScreen implements Screen {
 
     volatile public static boolean gameStart = false;
     volatile public static boolean gamePause = false;
@@ -40,115 +40,16 @@ public class WorldScreen implements Screen {
     List<Button> buttons = new ArrayList<>();
     int buttonIndex = 0;
 
-    private void makeTeam(){
-        // Second b1 = new Second(world, 70, 27,CreatureAttribute.BLUETEAM);   world.addBlue(b1);
-        // Second b2 = new Second(world, 70, 16,CreatureAttribute.BLUETEAM);    world.addBlue(b2);
-        // Second b3 = new Second(world, 70, 19,CreatureAttribute.BLUETEAM);    world.addBlue(b3);
-        // Second b4 = new Second(world, 70, 2,CreatureAttribute.BLUETEAM);   world.addBlue(b4);
-        // Second b5 = new Second(world, 70, 6,CreatureAttribute.BLUETEAM);    world.addBlue(b5);
-        // Second b6 = new Second(world, 70, 35,CreatureAttribute.BLUETEAM);    world.addBlue(b6);
-        // First b7 = new First(world, 40, 20,CreatureAttribute.BLUETEAM);   world.addBlue(b7);
-        // First b8 = new First(world, 40, 21, CreatureAttribute.BLUETEAM);     world.addBlue(b8);
-        // First b9 = new First(world, 40, 25,CreatureAttribute.BLUETEAM);   world.addBlue(b9);
-        // First b10 = new First(world, 40, 18, CreatureAttribute.BLUETEAM);     world.addBlue(b10);
-    }
-
+    Server server;
     
-    public WorldScreen() {
+    public ServerWorldScreen(Server server) {
+        this.server = server;
         world = new World();
-        this.makeTeam();
+        // server.writeToClient(World.WIDTH + " " + World.HEIGHT);
     }
 
-    public WorldScreen(boolean record) {
+    public ServerWorldScreen(boolean record) {
         world = new World(record);
-        this.makeTeam();
-    }
-
-    public WorldScreen(String status){
-        // if(status.equals("LOAD GAME")){
-        if(status.equals("NEW GAME")){
-            world = new World(false);
-            this.makeTeam();        
-        }
-        if(status.equals("RECORD GAME")){
-            world = new World(true);
-            this.makeTeam();
-            System.out.println("world1");
-        }
-        if(status.equals("LOAD GAME")){
-            BufferedReader inputStream = null;
-            try{
-                world = new World("GameMap.txt");          
-                inputStream = new BufferedReader(new FileReader("GameInfo.txt"));
-                String info;
-                while((info = inputStream.readLine()) != null){
-                    if(info != null){
-                        String[] Info = info.split(" ");
-                        if(Info[0].equals(CreatureAttribute.FIRST)){
-                        // if(Info[0] == CreatureAttribute.FIRST){
-                            // First temp = new First(world, Integer.valueOf(Info[1]), Integer.valueOf(Info[2]), Info[3], Integer.valueOf(Info[4]));
-                            // if(Info[3].equals(CreatureAttribute.BLUETEAM)){
-                            if(Info[3].equals(CreatureAttribute.BLUETEAM)){
-                                First temp = new First(world, Integer.valueOf(Info[1]), Integer.valueOf(Info[2]), CreatureAttribute.BLUETEAM, Integer.valueOf(Info[4]));
-                                temp.setHP(Integer.valueOf(Info[5]));
-                                world.addBlue(temp);
-                            }
-                            else{
-                                First temp = new First(world, Integer.valueOf(Info[1]), Integer.valueOf(Info[2]), CreatureAttribute.REDTEAM, Integer.valueOf(Info[4]));
-                                temp.setHP(Integer.valueOf(Info[5]));
-                                world.addRed(temp);
-                            }
-                        }
-                        else if(Info[0].equals(CreatureAttribute.SECOND)){
-                            if(Info[3].equals(CreatureAttribute.BLUETEAM)){
-                                Second temp = new Second(world, Integer.valueOf(Info[1]), Integer.valueOf(Info[2]), CreatureAttribute.BLUETEAM, Integer.valueOf(Info[4]));
-                                temp.setHP(Integer.valueOf(Info[5]));
-                                world.addBlue(temp);
-                            }
-                            else{
-                                Second temp = new Second(world, Integer.valueOf(Info[1]), Integer.valueOf(Info[2]), CreatureAttribute.REDTEAM, Integer.valueOf(Info[4]));
-                                temp.setHP(Integer.valueOf(Info[5]));
-                                world.addRed(temp);
-                            }
-                        }
-                        else if(Info[0].equals(CreatureAttribute.BULLET)){
-                            if(Info[3].equals(CreatureAttribute.BLUETEAM)){
-                                Thing owner = world.findInBlue(Integer.valueOf(Info[7]));
-                                if(owner != null){
-                                    Bullet temp = new Bullet(owner, Integer.valueOf(Info[5]), Integer.valueOf(Info[6]));
-                                    temp.setxPos(Integer.valueOf(Info[1]));
-                                    temp.setyPos(Integer.valueOf(Info[2]));
-                                    temp.setCode(Integer.valueOf(Info[4]));
-                                    owner.addBullet(temp);
-                                }
-                            }
-                            else{
-                                Thing owner = world.findInRed(Integer.valueOf(Info[7]));
-                                if(owner != null){
-                                    Bullet temp = new Bullet(owner, Integer.valueOf(Info[5]), Integer.valueOf(Info[6]));
-                                    temp.setxPos(Integer.valueOf(Info[1]));
-                                    temp.setyPos(Integer.valueOf(Info[2]));
-                                    temp.code = Integer.valueOf(Info[4]);
-                                    owner.addBullet(temp);
-                                }
-                            }
-                        }
-                    }
-                }
-                if(inputStream != null)
-                    inputStream.close();
-                inputStream = new BufferedReader(new FileReader("GameStatus.txt"));
-                while((info = inputStream.readLine()) != null){
-                    String[] Info = info.split(" ");
-                    this.cost = Integer.valueOf(Info[0]);
-                }
-                if(inputStream != null)
-                inputStream.close();
-            }
-            catch (IOException e){
-                e.printStackTrace();
-            }
-        }
     }
 
     @Override

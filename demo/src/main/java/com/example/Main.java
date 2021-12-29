@@ -6,6 +6,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -21,6 +23,7 @@ import javax.swing.JTextArea;
 
 import com.example.maze.MazeGenerator;
 import com.example.maze.World;
+import com.example.screen.ClientWorldScreen;
 import com.example.screen.Screen;
 import com.example.screen.StartScreen;
 import com.example.screen.WorldScreen;
@@ -34,6 +37,19 @@ public class Main extends JFrame implements KeyListener, MouseListener {
     public AsciiPanel terminal;
     public Screen screen;
 
+    class myClose extends WindowAdapter{
+        myClose(){
+            super();
+        }
+
+        @Override 
+        public void windowClosing(WindowEvent e){
+            if(screen instanceof ClientWorldScreen){
+                ((ClientWorldScreen)screen).closeClient();
+            }
+        }
+    }
+
 
     public Main() {
         super();
@@ -44,12 +60,15 @@ public class Main extends JFrame implements KeyListener, MouseListener {
         terminal = new AsciiPanel(World.WIDTH, World.HEIGHT + 5, AsciiFont.CP437_16x16);
         add(terminal);
         pack();
-        screen = new StartScreen();
+        // screen = new StartScreen();
         // screen = new WorldScreen(true);
+        screen = new ClientWorldScreen();
+        // ((ClientWorldScreen)screen).listen();
         addKeyListener(this);
         addMouseListener(this);
         // repaint();
         paintByTimer();
+        this.addWindowListener(new myClose());
 
     }
 
@@ -57,18 +76,18 @@ public class Main extends JFrame implements KeyListener, MouseListener {
     public void repaint() {
         terminal.clear();
         screen.displayOutput(terminal);
-        if(screen instanceof WorldScreen){
-            Screen temp = ((WorldScreen)screen).Finish();
-            if(temp != null){    
-                super.repaint();
-                screen = temp;
-                try {
-                    TimeUnit.MILLISECONDS.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+        // if(screen instanceof WorldScreen){
+        //     Screen temp = ((WorldScreen)screen).Finish();
+        //     if(temp != null){    
+        //         super.repaint();
+        //         screen = temp;
+        //         try {
+        //             TimeUnit.MILLISECONDS.sleep(1000);
+        //         } catch (InterruptedException e) {
+        //             e.printStackTrace();
+        //         }
+        //     }
+        // }
         super.repaint();
     }
 
@@ -131,6 +150,7 @@ public class Main extends JFrame implements KeyListener, MouseListener {
     }
 
     public static void main(String[] args) {
+        // System.out.println("hello world");
         Main app = new Main();
         app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         app.setVisible(true);

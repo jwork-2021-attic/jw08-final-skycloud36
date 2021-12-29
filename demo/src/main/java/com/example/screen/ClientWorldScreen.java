@@ -9,8 +9,17 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.channels.Channel;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
+import java.nio.channels.SocketChannel;
+import java.nio.charset.Charset;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -26,7 +35,7 @@ import com.example.maze.World;
 
 import com.example.asciiPanel.AsciiPanel;
 
-public class WorldScreen implements Screen {
+public class ClientWorldScreen implements Screen {
 
     volatile public static boolean gameStart = false;
     volatile public static boolean gamePause = false;
@@ -53,28 +62,120 @@ public class WorldScreen implements Screen {
         // First b10 = new First(world, 40, 18, CreatureAttribute.BLUETEAM);     world.addBlue(b10);
     }
 
-    
-    public WorldScreen() {
-        world = new World();
-        this.makeTeam();
+    SocketChannel readChannel;
+    SocketChannel writeChannel;
+    private Selector selector;
+    private ByteBuffer byteBuffer;
+
+    public ClientWorldScreen() {
+        try {
+            // readChannel = SocketChannel.open();
+            // readChannel.connect(new InetSocketAddress(8888));
+            selector = Selector.open();
+            byteBuffer = ByteBuffer.allocate(128);
+            writeChannel = SocketChannel.open();
+            writeChannel.connect(new InetSocketAddress(8888));
+            if(writeChannel.isConnected()){
+                writeChannel.configureBlocking(false);
+                writeChannel.register(selector, SelectionKey.OP_READ);
+                handleSocketByThread();
+                writeToServer("hello server\n");
+            }
+            // TimeUnit.MILLISECONDS.sleep(1000);
+            // socketChannel.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public WorldScreen(boolean record) {
-        world = new World(record);
-        this.makeTeam();
+    public void closeClient(){
+        if(writeChannel != null){
+            try {
+                writeChannel.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
-    public WorldScreen(String status){
+    public void listen(){
+        try{
+            boolean listen = true;
+            while(listen){
+                // System.out.println(111);
+                if(selector.select() == 0){
+                    // System.out.println(222);
+                    continue;
+                }
+                Iterator<SelectionKey> it = selector.selectedKeys().iterator();
+                while(it.hasNext()){
+                    SelectionKey key = it.next();
+                    if(key.isReadable()){
+                        SocketChannel socketChannel = (SocketChannel)key.channel();
+                        listen = readData(socketChannel);
+                    }
+                }
+                it.remove();
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public boolean readData(SocketChannel socketChannel) throws IOException{
+        int res = socketChannel.read(byteBuffer);
+        if(res > 0){
+            String process = bufToString(byteBuffer);
+            System.out.println(socketChannel.getLocalAddress()+ ":" + process);
+        }
+        else if(res == -1){
+            return false;
+        }
+        return true;
+    }
+
+    public String bufToString(ByteBuffer buf){
+        buf.flip();
+        Charset charset = Charset.forName("utf-8");
+        CharBuffer charBuffer = charset.decode(buf);
+        String temp = charBuffer.toString();
+        // System.out.println("temp:" + temp);
+        String[] Process = temp.split("\n");
+        if(Process.length > 0){
+            String process = Process[0];
+            buf.position(process.length());
+            // buf.compact();
+            buf.clear();
+            return process;
+        }
+        return "";
+    } 
+
+    public void handleSocketByThread(){
+        class myRun implements Runnable{
+            @Override
+            public void run(){
+                listen();
+            }
+        }
+        Thread myThread = new Thread(new myRun());
+        myThread.start();
+    }
+
+    public void writeToServer(String t){
+        if(writeChannel.isConnected()){
+            try {
+                ByteBuffer buffer = ByteBuffer.wrap(t.getBytes("utf-8"));
+                writeChannel.write(buffer);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public ClientWorldScreen(String status){
         // if(status.equals("LOAD GAME")){
-        if(status.equals("NEW GAME")){
-            world = new World(false);
-            this.makeTeam();        
-        }
-        if(status.equals("RECORD GAME")){
-            world = new World(true);
-            this.makeTeam();
-            System.out.println("world1");
-        }
         if(status.equals("LOAD GAME")){
             BufferedReader inputStream = null;
             try{

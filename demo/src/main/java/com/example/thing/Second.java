@@ -6,8 +6,10 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import com.example.maze.World;
 import com.example.screen.WorldScreen;
@@ -25,7 +27,8 @@ public class Second extends Creature {
         this.Defence = 0;
         this.ATK = 50;
         curTime = System.currentTimeMillis();
-        this.bullets = new ArrayList<>(100);
+        // this.bullets = new ArrayList<>(100);
+        bullets = new HashMap<>();
         bulletByThread(this, 50);
         moveByThread(this);
         // if(world.ifRecord() == true){
@@ -48,7 +51,8 @@ public class Second extends Creature {
         this.Defence = 0;
         this.ATK = 50;
         curTime = System.currentTimeMillis();
-        this.bullets = new ArrayList<>(100);
+        // this.bullets = new ArrayList<>(100);
+        bullets = new HashMap<>();
         bulletByThread(this, 50);
         moveByThread(this);
         // if(world.ifRecord() == true){
@@ -71,11 +75,13 @@ public class Second extends Creature {
         this.Defence = 0;
         this.ATK = 50;
         curTime = System.currentTimeMillis();
-        this.bullets = new ArrayList<>(100);
+        // this.bullets = new ArrayList<>(100);
+        bullets = new HashMap<>();
     }
 
     private Thing target;
-    private List<Bullet> bullets;
+    // private List<Bullet> bullets;
+    private HashMap<Integer, Bullet> bullets;
     private long curTime;
 
     @Override
@@ -173,17 +179,21 @@ public class Second extends Creature {
 
     @Override
     public void addBullet(Bullet bullet){
-        this.bullets.add(bullet);
+        // this.bullets.add(bullet);
+        this.bullets.put(new Integer(bullet.getCode()), bullet);
     }
 
     @Override
     public Thing findBullet(int code){
-        for(Bullet bullet : this.bullets){
-            if(bullet.getCode() == code){
-                return bullet;
-            }
-        }
-        return null;
+        // for(Bullet bullet : this.bullets){
+        //     if(bullet.getCode() == code){
+        //         return bullet;
+        //     }
+        // }
+        Bullet bullet = bullets.get(new Integer(code));
+        return bullet;
+
+        // return null;
     }
 
     @Override
@@ -272,7 +282,8 @@ public class Second extends Creature {
             }
             synchronized (this.bullets) {
                 if (bullet != null) {
-                    bullets.add(bullet);
+                    // bullets.add(bullet);
+                    bullets.put(bullet.getCode(), bullet);
                 }
             }
             if(world.ifRecord() == true){
@@ -314,10 +325,13 @@ public class Second extends Creature {
                             }
                         }
                     }
-                    Iterator<Bullet> it = second.bullets.iterator();
+                    // Iterator<Bullet> it = second.bullets.iterator();
+                    Iterator <HashMap.Entry<Integer, Bullet>>it = bullets.entrySet().iterator();
                     Bullet bullet;
                     while (it.hasNext()) {
-                        bullet = it.next();
+                        // bullet = it.next();
+                        HashMap.Entry<Integer, Bullet> entry = it.next();
+                        bullet = entry.getValue();
                         if (bullet.ifExist()) {
                             bullet.moveDirect();
                         } else {
@@ -372,8 +386,10 @@ public class Second extends Creature {
 
     @Override
     public void disPlayout(AsciiPanel terminal) {
-        for (Bullet bullet : this.bullets) {
+        // for (Bullet bullet : this.bullets) 
+        for (Bullet bullet : this.bullets.values()){
             if (bullet.ifExist()) {
+                // System.out.println(bullet);
                 terminal.write(bullet.getGlyph(), bullet.getX(), bullet.getY(), this.getColor());
             }
         }
@@ -386,7 +402,8 @@ public class Second extends Creature {
         List<String> info = new ArrayList<>();
         String singleInfo = this.name + " " + this.xPos + " " + this.yPos + " " + this.team + " " + this.code + " " + this.HP;
         info.add(singleInfo);
-        for(Bullet bullet : this.bullets){
+        // for (Bullet bullet : this.bullets) 
+        for (Bullet bullet : this.bullets.values()){
             List<String> temp = bullet.getInfo();
             if(temp != null)
                 info.addAll(temp);

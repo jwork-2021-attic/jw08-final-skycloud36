@@ -1,0 +1,1344 @@
+Create RedTeam Second 0 32 13
+Move RedTeam Second 0 0 1
+Move RedTeam Second 0 -1 0
+Create RedTeam Bullet 0 -1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 0 -1 0 0
+Create RedTeam Bullet 1 -1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Create RedTeam Bullet 2 -1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Create RedTeam Bullet 3 -1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Create RedTeam Bullet 4 -1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Create RedTeam Bullet 5 -1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Create RedTeam Bullet 6 -1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Create RedTeam Bullet 7 -1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 0 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Dead RedTeam Bullet 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Create RedTeam Bullet 8 -1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Second 0 0 1
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 1 -1 0 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Dead RedTeam Bullet 1 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Create RedTeam Bullet 9 0 1 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 9 0 1 0
+Move RedTeam Bullet 2 -1 0 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 9 0 1 0
+Dead RedTeam Bullet 2 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 9 0 1 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 9 0 1 0
+Move RedTeam Bullet 3 -1 0 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 9 0 1 0
+Dead RedTeam Bullet 3 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 9 0 1 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 9 0 1 0
+Create RedTeam Bullet 10 0 1 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 9 0 1 0
+Move RedTeam Bullet 10 0 1 0
+Move RedTeam Bullet 4 -1 0 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 9 0 1 0
+Move RedTeam Bullet 10 0 1 0
+Dead RedTeam Bullet 4 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 9 0 1 0
+Move RedTeam Bullet 10 0 1 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 9 0 1 0
+Move RedTeam Bullet 10 0 1 0
+Create RedTeam Bullet 11 0 1 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 5 -1 0 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 9 0 1 0
+Move RedTeam Bullet 10 0 1 0
+Move RedTeam Bullet 11 0 1 0
+Dead RedTeam Bullet 5 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 9 0 1 0
+Move RedTeam Bullet 10 0 1 0
+Move RedTeam Bullet 11 0 1 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 9 0 1 0
+Move RedTeam Bullet 10 0 1 0
+Move RedTeam Bullet 11 0 1 0
+Create RedTeam Bullet 12 0 1 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 6 -1 0 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 9 0 1 0
+Move RedTeam Bullet 10 0 1 0
+Move RedTeam Bullet 11 0 1 0
+Move RedTeam Bullet 12 0 1 0
+Dead RedTeam Bullet 6 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 9 0 1 0
+Move RedTeam Bullet 10 0 1 0
+Move RedTeam Bullet 11 0 1 0
+Move RedTeam Bullet 12 0 1 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 9 0 1 0
+Move RedTeam Bullet 10 0 1 0
+Move RedTeam Bullet 11 0 1 0
+Move RedTeam Bullet 12 0 1 0
+Create RedTeam Bullet 13 0 1 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 9 0 1 0
+Move RedTeam Bullet 10 0 1 0
+Move RedTeam Bullet 11 0 1 0
+Move RedTeam Bullet 12 0 1 0
+Move RedTeam Bullet 13 0 1 0
+Move RedTeam Bullet 7 -1 0 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 9 0 1 0
+Move RedTeam Bullet 10 0 1 0
+Move RedTeam Bullet 11 0 1 0
+Move RedTeam Bullet 12 0 1 0
+Move RedTeam Bullet 13 0 1 0
+Dead RedTeam Bullet 7 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 9 0 1 0
+Move RedTeam Bullet 10 0 1 0
+Move RedTeam Bullet 11 0 1 0
+Move RedTeam Bullet 12 0 1 0
+Move RedTeam Bullet 13 0 1 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 9 0 1 0
+Move RedTeam Bullet 10 0 1 0
+Move RedTeam Bullet 11 0 1 0
+Move RedTeam Bullet 12 0 1 0
+Move RedTeam Bullet 13 0 1 0
+Create RedTeam Bullet 14 0 1 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 8 -1 0 0
+Move RedTeam Bullet 9 0 1 0
+Move RedTeam Bullet 10 0 1 0
+Move RedTeam Bullet 11 0 1 0
+Move RedTeam Bullet 12 0 1 0
+Move RedTeam Bullet 13 0 1 0
+Move RedTeam Bullet 14 0 1 0
+Dead RedTeam Bullet 8 0
+Move RedTeam Bullet 9 0 1 0
+Move RedTeam Bullet 10 0 1 0
+Move RedTeam Bullet 11 0 1 0
+Move RedTeam Bullet 12 0 1 0
+Move RedTeam Bullet 13 0 1 0
+Move RedTeam Bullet 14 0 1 0
+Dead RedTeam Bullet 9 0
+Move RedTeam Bullet 10 0 1 0
+Move RedTeam Bullet 11 0 1 0
+Move RedTeam Bullet 12 0 1 0
+Move RedTeam Bullet 13 0 1 0
+Move RedTeam Bullet 14 0 1 0
+Create RedTeam Bullet 15 0 1 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 10 0 1 0
+Move RedTeam Bullet 11 0 1 0
+Move RedTeam Bullet 12 0 1 0
+Move RedTeam Bullet 13 0 1 0
+Move RedTeam Bullet 14 0 1 0
+Move RedTeam Bullet 15 0 1 0
+Move RedTeam Bullet 10 0 1 0
+Move RedTeam Bullet 11 0 1 0
+Move RedTeam Bullet 12 0 1 0
+Move RedTeam Bullet 13 0 1 0
+Move RedTeam Bullet 14 0 1 0
+Move RedTeam Bullet 15 0 1 0
+Move RedTeam Second 0 1 0
+Move RedTeam Bullet 10 0 1 0
+Move RedTeam Bullet 11 0 1 0
+Move RedTeam Bullet 12 0 1 0
+Move RedTeam Bullet 13 0 1 0
+Move RedTeam Bullet 14 0 1 0
+Move RedTeam Bullet 15 0 1 0
+Move RedTeam Bullet 10 0 1 0
+Move RedTeam Bullet 11 0 1 0
+Move RedTeam Bullet 12 0 1 0
+Move RedTeam Bullet 13 0 1 0
+Move RedTeam Bullet 14 0 1 0
+Move RedTeam Bullet 15 0 1 0
+Move RedTeam Bullet 10 0 1 0
+Move RedTeam Bullet 11 0 1 0
+Move RedTeam Bullet 12 0 1 0
+Move RedTeam Bullet 13 0 1 0
+Move RedTeam Bullet 14 0 1 0
+Move RedTeam Bullet 15 0 1 0
+Move RedTeam Bullet 10 0 1 0
+Move RedTeam Bullet 11 0 1 0
+Move RedTeam Bullet 12 0 1 0
+Move RedTeam Bullet 13 0 1 0
+Move RedTeam Bullet 14 0 1 0
+Move RedTeam Bullet 15 0 1 0
+Dead RedTeam Bullet 10 0
+Move RedTeam Bullet 11 0 1 0
+Move RedTeam Bullet 12 0 1 0
+Move RedTeam Bullet 13 0 1 0
+Move RedTeam Bullet 14 0 1 0
+Move RedTeam Bullet 15 0 1 0
+Move RedTeam Bullet 11 0 1 0
+Move RedTeam Bullet 12 0 1 0
+Move RedTeam Bullet 13 0 1 0
+Move RedTeam Bullet 14 0 1 0
+Move RedTeam Bullet 15 0 1 0
+Create RedTeam Bullet 16 1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 11 0 1 0
+Move RedTeam Bullet 12 0 1 0
+Move RedTeam Bullet 13 0 1 0
+Move RedTeam Bullet 14 0 1 0
+Move RedTeam Bullet 15 0 1 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 11 0 1 0
+Move RedTeam Bullet 12 0 1 0
+Move RedTeam Bullet 13 0 1 0
+Move RedTeam Bullet 14 0 1 0
+Move RedTeam Bullet 15 0 1 0
+Move RedTeam Bullet 16 1 0 0
+Dead RedTeam Bullet 11 0
+Move RedTeam Bullet 12 0 1 0
+Move RedTeam Bullet 13 0 1 0
+Move RedTeam Bullet 14 0 1 0
+Move RedTeam Bullet 15 0 1 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 12 0 1 0
+Move RedTeam Bullet 13 0 1 0
+Move RedTeam Bullet 14 0 1 0
+Move RedTeam Bullet 15 0 1 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 12 0 1 0
+Move RedTeam Bullet 13 0 1 0
+Move RedTeam Bullet 14 0 1 0
+Move RedTeam Bullet 15 0 1 0
+Move RedTeam Bullet 16 1 0 0
+Dead RedTeam Bullet 12 0
+Move RedTeam Bullet 13 0 1 0
+Move RedTeam Bullet 14 0 1 0
+Move RedTeam Bullet 15 0 1 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 13 0 1 0
+Move RedTeam Bullet 14 0 1 0
+Move RedTeam Bullet 15 0 1 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 13 0 1 0
+Move RedTeam Bullet 14 0 1 0
+Move RedTeam Bullet 15 0 1 0
+Create RedTeam Bullet 17 1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Dead RedTeam Bullet 13 0
+Move RedTeam Bullet 14 0 1 0
+Move RedTeam Bullet 15 0 1 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 14 0 1 0
+Move RedTeam Bullet 15 0 1 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 14 0 1 0
+Move RedTeam Bullet 15 0 1 0
+Create RedTeam Bullet 18 1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 14 0 1 0
+Move RedTeam Bullet 15 0 1 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Dead RedTeam Bullet 14 0
+Move RedTeam Bullet 15 0 1 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 15 0 1 0
+Create RedTeam Bullet 19 1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 15 0 1 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Dead RedTeam Bullet 15 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Create RedTeam Bullet 20 1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Create RedTeam Bullet 21 1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Create RedTeam Bullet 22 1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Create RedTeam Bullet 23 1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Second 0 0 -1
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Create RedTeam Bullet 24 0 -1 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 24 0 -1 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 24 0 -1 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 24 0 -1 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 24 0 -1 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 24 0 -1 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 24 0 -1 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 24 0 -1 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 24 0 -1 0
+Create RedTeam Bullet 25 0 -1 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 24 0 -1 0
+Move RedTeam Bullet 25 0 -1 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 24 0 -1 0
+Move RedTeam Bullet 25 0 -1 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 24 0 -1 0
+Move RedTeam Bullet 25 0 -1 0
+Create RedTeam Bullet 26 0 -1 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 16 1 0 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 24 0 -1 0
+Move RedTeam Bullet 25 0 -1 0
+Move RedTeam Bullet 26 0 -1 0
+Dead RedTeam Bullet 16 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 24 0 -1 0
+Move RedTeam Bullet 25 0 -1 0
+Move RedTeam Bullet 26 0 -1 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Dead RedTeam Bullet 24 0
+Move RedTeam Bullet 25 0 -1 0
+Move RedTeam Bullet 26 0 -1 0
+Create RedTeam Bullet 27 0 -1 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 25 0 -1 0
+Move RedTeam Bullet 26 0 -1 0
+Move RedTeam Bullet 27 0 -1 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 25 0 -1 0
+Move RedTeam Bullet 26 0 -1 0
+Move RedTeam Bullet 27 0 -1 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 25 0 -1 0
+Move RedTeam Bullet 26 0 -1 0
+Move RedTeam Bullet 27 0 -1 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 25 0 -1 0
+Move RedTeam Bullet 26 0 -1 0
+Move RedTeam Bullet 27 0 -1 0
+Create RedTeam Bullet 28 0 -1 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 25 0 -1 0
+Move RedTeam Bullet 26 0 -1 0
+Move RedTeam Bullet 27 0 -1 0
+Move RedTeam Bullet 28 0 -1 0
+Move RedTeam Bullet 17 1 0 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 25 0 -1 0
+Move RedTeam Bullet 26 0 -1 0
+Move RedTeam Bullet 27 0 -1 0
+Move RedTeam Bullet 28 0 -1 0
+Dead RedTeam Bullet 17 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 25 0 -1 0
+Move RedTeam Bullet 26 0 -1 0
+Move RedTeam Bullet 27 0 -1 0
+Move RedTeam Bullet 28 0 -1 0
+Create RedTeam Bullet 29 0 -1 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Dead RedTeam Bullet 25 0
+Move RedTeam Bullet 26 0 -1 0
+Move RedTeam Bullet 27 0 -1 0
+Move RedTeam Bullet 28 0 -1 0
+Move RedTeam Bullet 29 0 -1 0
+Move RedTeam Second 0 -1 0
+Move RedTeam Bullet 18 1 0 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 26 0 -1 0
+Move RedTeam Bullet 27 0 -1 0
+Move RedTeam Bullet 28 0 -1 0
+Move RedTeam Bullet 29 0 -1 0
+Dead RedTeam Bullet 18 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 26 0 -1 0
+Move RedTeam Bullet 27 0 -1 0
+Move RedTeam Bullet 28 0 -1 0
+Move RedTeam Bullet 29 0 -1 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Dead RedTeam Bullet 26 0
+Move RedTeam Bullet 27 0 -1 0
+Move RedTeam Bullet 28 0 -1 0
+Move RedTeam Bullet 29 0 -1 0
+Move RedTeam Bullet 19 1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 27 0 -1 0
+Move RedTeam Bullet 28 0 -1 0
+Move RedTeam Bullet 29 0 -1 0
+Create RedTeam Bullet 30 -1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Dead RedTeam Bullet 19 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 27 0 -1 0
+Move RedTeam Bullet 28 0 -1 0
+Move RedTeam Bullet 29 0 -1 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Dead RedTeam Bullet 27 0
+Move RedTeam Bullet 28 0 -1 0
+Move RedTeam Bullet 29 0 -1 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 28 0 -1 0
+Move RedTeam Bullet 29 0 -1 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 20 1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 28 0 -1 0
+Move RedTeam Bullet 29 0 -1 0
+Move RedTeam Bullet 30 -1 0 0
+Dead RedTeam Bullet 20 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 28 0 -1 0
+Move RedTeam Bullet 29 0 -1 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Dead RedTeam Bullet 28 0
+Move RedTeam Bullet 29 0 -1 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 21 1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 29 0 -1 0
+Move RedTeam Bullet 30 -1 0 0
+Dead RedTeam Bullet 21 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 29 0 -1 0
+Move RedTeam Bullet 30 -1 0 0
+Create RedTeam Bullet 31 -1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Dead RedTeam Bullet 29 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Move RedTeam Bullet 22 1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Dead RedTeam Bullet 22 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Create RedTeam Bullet 32 -1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 23 1 0 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Create RedTeam Bullet 33 -1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Dead RedTeam Bullet 23 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Create RedTeam Bullet 34 -1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Create RedTeam Bullet 35 -1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Create RedTeam Bullet 36 -1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Create RedTeam Bullet 37 -1 0 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Move RedTeam Second 0 0 1
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 30 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Dead RedTeam Bullet 30 0
+Move RedTeam Bullet 31 -1 0 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 31 -1 0 0
+Create RedTeam Bullet 38 0 1 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Move RedTeam Bullet 31 -1 0 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Move RedTeam Bullet 31 -1 0 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Move RedTeam Bullet 31 -1 0 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Move RedTeam Bullet 31 -1 0 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Move RedTeam Bullet 31 -1 0 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Move RedTeam Bullet 31 -1 0 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Dead RedTeam Bullet 31 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Create RedTeam Bullet 39 0 1 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 32 -1 0 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Move RedTeam Bullet 39 0 1 0
+Dead RedTeam Bullet 32 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Move RedTeam Bullet 39 0 1 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Move RedTeam Bullet 39 0 1 0
+Create RedTeam Bullet 40 0 1 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 33 -1 0 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Move RedTeam Bullet 39 0 1 0
+Move RedTeam Bullet 40 0 1 0
+Dead RedTeam Bullet 33 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Move RedTeam Bullet 39 0 1 0
+Move RedTeam Bullet 40 0 1 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Move RedTeam Bullet 39 0 1 0
+Move RedTeam Bullet 40 0 1 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Move RedTeam Bullet 39 0 1 0
+Move RedTeam Bullet 40 0 1 0
+Create RedTeam Bullet 41 0 1 RedTeam Second 0
+Attack RedTeam Second 0
+Move RedTeam Bullet 34 -1 0 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Move RedTeam Bullet 39 0 1 0
+Move RedTeam Bullet 40 0 1 0
+Move RedTeam Bullet 41 0 1 0
+Dead RedTeam Bullet 34 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Move RedTeam Bullet 39 0 1 0
+Move RedTeam Bullet 40 0 1 0
+Move RedTeam Bullet 41 0 1 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Move RedTeam Bullet 39 0 1 0
+Move RedTeam Bullet 40 0 1 0
+Move RedTeam Bullet 41 0 1 0
+Move RedTeam Bullet 35 -1 0 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Move RedTeam Bullet 39 0 1 0
+Move RedTeam Bullet 40 0 1 0
+Move RedTeam Bullet 41 0 1 0
+Dead RedTeam Bullet 35 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Move RedTeam Bullet 39 0 1 0
+Move RedTeam Bullet 40 0 1 0
+Move RedTeam Bullet 41 0 1 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Move RedTeam Bullet 39 0 1 0
+Move RedTeam Bullet 40 0 1 0
+Move RedTeam Bullet 41 0 1 0
+Move RedTeam Bullet 36 -1 0 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Move RedTeam Bullet 39 0 1 0
+Move RedTeam Bullet 40 0 1 0
+Move RedTeam Bullet 41 0 1 0
+Dead RedTeam Bullet 36 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 38 0 1 0
+Move RedTeam Bullet 39 0 1 0
+Move RedTeam Bullet 40 0 1 0
+Move RedTeam Bullet 41 0 1 0
+Move RedTeam Bullet 37 -1 0 0
+Dead RedTeam Bullet 38 0
+Move RedTeam Bullet 39 0 1 0
+Move RedTeam Bullet 40 0 1 0
+Move RedTeam Bullet 41 0 1 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 39 0 1 0
+Move RedTeam Bullet 40 0 1 0
+Move RedTeam Bullet 41 0 1 0
+Move RedTeam Bullet 37 -1 0 0
+Move RedTeam Bullet 39 0 1 0
+Move RedTeam Bullet 40 0 1 0
+Move RedTeam Bullet 41 0 1 0
+Dead RedTeam Bullet 37 0
+Move RedTeam Bullet 39 0 1 0
+Move RedTeam Bullet 40 0 1 0
+Move RedTeam Bullet 41 0 1 0
+Move RedTeam Bullet 39 0 1 0
+Move RedTeam Bullet 40 0 1 0
+Move RedTeam Bullet 41 0 1 0
+Move RedTeam Bullet 39 0 1 0
+Move RedTeam Bullet 40 0 1 0
+Move RedTeam Bullet 41 0 1 0
+Move RedTeam Bullet 39 0 1 0
+Move RedTeam Bullet 40 0 1 0
+Move RedTeam Bullet 41 0 1 0
+Move RedTeam Bullet 39 0 1 0
+Move RedTeam Bullet 40 0 1 0
+Move RedTeam Bullet 41 0 1 0
+Dead RedTeam Bullet 39 0
+Move RedTeam Bullet 40 0 1 0
+Move RedTeam Bullet 41 0 1 0
+Move RedTeam Bullet 40 0 1 0
+Move RedTeam Bullet 41 0 1 0
+Move RedTeam Bullet 40 0 1 0
+Move RedTeam Bullet 41 0 1 0
+Dead RedTeam Bullet 40 0
+Move RedTeam Bullet 41 0 1 0
+Move RedTeam Bullet 41 0 1 0
+Move RedTeam Bullet 41 0 1 0
+Move RedTeam Bullet 41 0 1 0
+Dead RedTeam Bullet 41 0
+
