@@ -47,16 +47,16 @@ public class WorldScreen implements Screen {
         // Second b4 = new Second(world, 70, 2,CreatureAttribute.BLUETEAM);   world.addBlue(b4);
         // Second b5 = new Second(world, 70, 6,CreatureAttribute.BLUETEAM);    world.addBlue(b5);
         // Second b6 = new Second(world, 70, 35,CreatureAttribute.BLUETEAM);    world.addBlue(b6);
-        Second r4 = new Second(world, 30, 2, CreatureAttribute.REDTEAM);   world.addRed(r4);
-        Second r5 = new Second(world, 30, 6, CreatureAttribute.REDTEAM);    world.addRed(r5);
-        Second r6 = new Second(world, 30, 35, CreatureAttribute.REDTEAM);    world.addRed(r6);
+        // Second r4 = new Second(world, 30, 2, CreatureAttribute.REDTEAM);   world.addRed(r4);
+        // Second r5 = new Second(world, 30, 6, CreatureAttribute.REDTEAM);    world.addRed(r5);
+        // Second r6 = new Second(world, 30, 35, CreatureAttribute.REDTEAM);    world.addRed(r6);
         
         First b7 = new First(world, 40, 20, CreatureAttribute.BLUETEAM);   world.addBlue(b7);
         First b8 = new First(world, 40, 21, CreatureAttribute.BLUETEAM);     world.addBlue(b8);
         // First b9 = new First(world, 40, 25,CreatureAttribute.BLUETEAM);   world.addBlue(b9);
         // First b10 = new First(world, 40, 18, CreatureAttribute.BLUETEAM);     world.addBlue(b10);
-        First r9 = new First(world, 20, 25, CreatureAttribute.REDTEAM);   world.addRed(r9);
-        First r10 = new First(world, 20, 18, CreatureAttribute.REDTEAM);     world.addRed(r10);
+        // First r9 = new First(world, 20, 25, CreatureAttribute.REDTEAM);   world.addRed(r9);
+        // First r10 = new First(world, 20, 18, CreatureAttribute.REDTEAM);     world.addRed(r10);
     }
 
     

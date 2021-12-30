@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="2" failures="0" name="com.example.MainTest" time="1.681" errors="0" skipped="0">
+<testsuite tests="2" failures="0" name="com.example.MainTest" time="1.659" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="D:\Program Files\Java\jdk1.8.0_231\jre\bin"/>
     <property name="java.vm.version" value="25.231-b11"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="E:\Study\大三上\java高级\homework\jw08-skycloud36\demo"/>
+    <property name="maven.multiModuleProjectDirectory" value="E:\Study\大三上\java高级\homework\jw08-final-skycloud36\demo"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=";"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="E:\Study\大三上\java高级\homework\jw08-skycloud36\demo"/>
+    <property name="user.dir" value="E:\Study\大三上\java高级\homework\jw08-final-skycloud36\demo"/>
     <property name="java.runtime.version" value="1.8.0_231-b11"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="D:\Program Files\Java\jdk1.8.0_231\jre\lib\endorsed"/>
@@ -29,7 +29,7 @@
     <property name="os.name" value="Windows 10"/>
     <property name="classworlds.conf" value="E:\Program Files\Apache\maven\bin\m2.conf"/>
     <property name="sun.jnu.encoding" value="GBK"/>
-    <property name="java.library.path" value="D:\Program Files\Java\jdk1.8.0_231\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;d:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;D:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;D:\Program Files\Intel\Intel(R) Management Engine Components\DAL;D:\Program Files\dotnet\;D:\Program Files (x86)\MinGW\mingw64\bin;D:\Program Files\Java\jdk1.8.0_231\bin;d:\Program Files\Git\cmd;E:\Andriod\platform-tools;E:\Andriod\tools;D:\ProgramData\Anaconda3\condabin;E:\Andriod\AndriodSdk\platform-tools;D:\ProgramData\Anaconda3\Lib\site-packages\pyqt5_tools;E:\Andriod\AndriodSdk\build-tools\29.0.0;D:\ProgramData\Anaconda3;E:\Program Files\Apache\maven\bin;D:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\gyh\AppData\Local\Microsoft\WindowsApps;D:\Program Files\Bandizip\;E:\intelFPGA\17.1\modelsim_ase\win32aloem;E:\intelFPGA_lite\17.1\modelsim_ase\win32aloem;C:\Users\gyh\.dotnet\tools;C:\Users\gyh\AppData\Local\GitHubDesktop\bin;D:\Programs\Microsoft VS Code\bin;d:\Program Files\JetBrains\PyCharm Community Edition 2021.2.2\bin;;."/>
+    <property name="java.library.path" value="D:\Program Files\Java\jdk1.8.0_231\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;d:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;D:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;D:\Program Files\Intel\Intel(R) Management Engine Components\DAL;D:\Program Files\dotnet\;D:\Program Files (x86)\MinGW\mingw64\bin;D:\Program Files\Java\jdk1.8.0_231\bin;d:\Program Files\Git\cmd;E:\Andriod\platform-tools;E:\Andriod\tools;D:\ProgramData\Anaconda3\condabin;E:\Andriod\AndriodSdk\platform-tools;D:\ProgramData\Anaconda3\Lib\site-packages\pyqt5_tools;E:\Andriod\AndriodSdk\build-tools\29.0.0;D:\ProgramData\Anaconda3;E:\Program Files\Apache\maven\bin;D:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\gyh\AppData\Local\Microsoft\WindowsApps;D:\Program Files\Bandizip\;E:\intelFPGA\17.1\modelsim_ase\win32aloem;E:\intelFPGA_lite\17.1\modelsim_ase\win32aloem;C:\Users\gyh\.dotnet\tools;C:\Users\gyh\AppData\Local\GitHubDesktop\bin;D:\Programs\Microsoft VS Code\bin;d:\Program Files\JetBrains\PyCharm Community Edition 2021.2.2\bin;."/>
     <property name="maven.conf" value="E:\Program Files\Apache\maven/conf"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
@@ -65,6 +65,6 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.example.MainTest" name="testBuild" time="0.66"/>
-  <testcase classname="com.example.MainTest" name="testRepaint" time="1.021"/>
+  <testcase classname="com.example.MainTest" name="testBuild" time="0.626"/>
+  <testcase classname="com.example.MainTest" name="testRepaint" time="1.033"/>
 </testsuite>
