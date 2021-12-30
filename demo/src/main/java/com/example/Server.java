@@ -87,12 +87,20 @@ public class Server {
                             // handleSocketByThread(socketChannel);
                             client1.configureBlocking(false);
                             client1.register(selector, SelectionKey.OP_READ);
+                            ByteBuffer buffer;
+                            buffer = ByteBuffer.wrap("Client client1\n".getBytes("utf-8"));
+                            client1.write(buffer);
+                            System.out.println(client1.getRemoteAddress());
                         }
                         else if(client2 == null || client2.isConnected() == false){
                             client2 = socketChannel;
                             // handleSocketByThread(socketChannel);
                             client2.configureBlocking(false);
                             client2.register(selector, SelectionKey.OP_READ);
+                            ByteBuffer buffer;
+                            buffer = ByteBuffer.wrap("Client client2\n".getBytes("utf-8"));
+                            client2.write(buffer);
+                            System.out.println(client2.getRemoteAddress());
                         }
                     }
                     if(key.isReadable()){
@@ -100,10 +108,10 @@ public class Server {
                         if(socketChannel != null && socketChannel.isOpen()){
                             readData(socketChannel);
                         }
-                        if(client1 != null && client2 != null){
-                            serverWorldScreen.makeTeam();
-                            serverWorldScreen.gameStart();
-                        }
+                        // if(client1 != null && client2 != null){
+                        //     serverWorldScreen.makeTeam();
+                        //     serverWorldScreen.gameStart();
+                        // }
                         // serverWorldScreen.makeTeam();
                         // serverWorldScreen.gameStart();
                         // writeToClient("Hello client");
@@ -123,7 +131,19 @@ public class Server {
         if(res > 0){
             List<String> process = bufToString(byteBuffer);
             for(int i = 0; i < process.size(); i++){
-                System.out.println(socketChannel.getLocalAddress()+ ":" + process.get(i));
+                String t = process.get(i);
+                // System.out.println(socketChannel.getRemoteAddress()+ ":" + t);
+                if(socketChannel == client1 && t.length() > 0){
+                    t = "1 " + t;
+                    System.out.println(socketChannel.getRemoteAddress()+ ":" + t);
+                    serverWorldScreen.handleProcess(t);
+                }
+                else if(socketChannel == client2 && t.length() > 0){
+                    t = "2 " + t;
+                    System.out.println(socketChannel.getRemoteAddress()+ ":" + t);
+                    serverWorldScreen.handleProcess(t);
+                }
+                // serverWorldScreen.handleProcess(process.get(i));
             }
         }
         else if(res == -1){
@@ -161,11 +181,11 @@ public class Server {
             ByteBuffer buffer;
             t = t + "\n";
             if(client1 != null && client1.isOpen()){
-                buffer = ByteBuffer.wrap(t.getBytes("utf-8"));
-                Charset charset = Charset.forName("utf-8");
-                CharBuffer charBuffer = charset.decode(buffer);
-                String temp = charBuffer.toString();
-                System.out.print("writeToClient1: " + temp);
+                // buffer = ByteBuffer.wrap(t.getBytes("utf-8"));
+                // Charset charset = Charset.forName("utf-8");
+                // CharBuffer charBuffer = charset.decode(buffer);
+                // String temp = charBuffer.toString();
+                // System.out.print("writeToClient1: " + temp);
                 buffer = ByteBuffer.wrap(t.getBytes("utf-8"));
                 client1.write(buffer);
             }

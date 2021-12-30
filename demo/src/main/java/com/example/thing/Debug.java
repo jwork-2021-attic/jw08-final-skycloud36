@@ -23,5 +23,7 @@ public interface Debug {
     boolean DebugMoveProcess = false;
     boolean DebugAttackProcess = false;
     boolean DebugBeAttackProcess = false;
-    boolean DebugProcess = true;
+    boolean DebugProcess = false;
+
+    boolean DebugCreatureToward = false;
 }

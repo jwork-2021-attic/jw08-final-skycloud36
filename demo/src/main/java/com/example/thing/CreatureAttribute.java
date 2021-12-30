@@ -50,6 +50,8 @@ public interface CreatureAttribute {
 
     public default int getCode(){return 0;}
 
+    public default void Select(){};
+
     public default Thing getOwner(){return null;}
 
     public default Thing findBullet(int code){return null;}
@@ -61,6 +63,8 @@ public interface CreatureAttribute {
     public default void changeGlyph(){}
 
     public default Thing getTarget(){return null;}
+
+    public default void changeToward(int toward){}
 
     public default void processCreate(Thing creature){
         if(creature.world.ifRecord() == true){

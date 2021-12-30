@@ -173,6 +173,9 @@ public class Creature extends Thing implements Debug {
         else if(xPos == 1 && yPos == 0){
             this.toward = RIGHT;
         }
+        if(DebugCreatureToward){
+            System.out.println(this.getTeam() + " " + this.getName() + " " + this.getCode() + " Toward" + this.toward);
+        }
         this.changeGlyph();
         this.moveBy(xPos, yPos);
     }
@@ -220,7 +223,7 @@ public class Creature extends Thing implements Debug {
     @Override
     public void beDead() {
         if (DebugDie) {
-            System.out.println(this.getTeam() + " " + this.getName() + Thread.currentThread().getId() + " die");
+            System.out.println(this.getTeam() + " " + this.getName() + " " + this.getCode() + " die");
         }
         this.exist = false;
         if (this.name != BULLET) {
@@ -305,6 +308,12 @@ public class Creature extends Thing implements Debug {
 
     protected int toward;
 
+    @Override 
+    public void changeToward(int toward){
+        this.toward = toward;
+        this.changeGlyph();
+    }
+
     protected boolean selected;
 
     @Override
@@ -312,6 +321,7 @@ public class Creature extends Thing implements Debug {
         return selected;
     }
 
+    @Override
     public synchronized void Select(){
         this.selected = true;
         this.setColor(Color.GREEN);
@@ -319,7 +329,12 @@ public class Creature extends Thing implements Debug {
 
     public synchronized void UnSelect(){
         this.selected = false;
-        this.setColor(Color.RED);
+        if(this.getTeam() == REDTEAM){
+            this.setColor(Color.RED);
+        }
+        else{
+            this.setColor(Color.BLUE);
+        }
     }
 
     public synchronized void Choose(){
@@ -327,6 +342,11 @@ public class Creature extends Thing implements Debug {
     }
 
     public synchronized void UnChoose(){
-        this.setColor(Color.RED);
+        if(this.getTeam() == REDTEAM){
+            this.setColor(Color.RED);
+        }
+        else{
+            this.setColor(Color.BLUE);
+        }
     }
 }

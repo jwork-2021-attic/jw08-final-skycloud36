@@ -61,7 +61,7 @@ public class Main extends JFrame implements KeyListener, MouseListener {
         add(terminal);
         pack();
         // screen = new StartScreen();
-        // screen = new WorldScreen(true);
+        // screen = new WorldScreen(false);
         screen = new ClientWorldScreen();
         // ((ClientWorldScreen)screen).listen();
         addKeyListener(this);

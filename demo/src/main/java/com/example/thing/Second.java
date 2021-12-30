@@ -284,11 +284,13 @@ public class Second extends Creature {
             synchronized (this.bullets) {
                 if (bullet != null) {
                     // bullets.add(bullet);
+                    // System.out.println("1111");
                     bullets.put(bullet.getCode(), bullet);
+                    // System.out.println("2222");
                 }
             }
             if(world.ifRecord() == true){
-                String process = "Attack" + " " + this.team + " " + this.name + " " + this.code;
+                String process = "Attack" + " " + this.team + " " + this.name + " " + this.code + " " + this.toward;
                 if (DebugAttackProcess){
                     System.out.println(process);
                 }
@@ -318,8 +320,8 @@ public class Second extends Creature {
             public void run() {
                 synchronized (this.second.bullets) {
                     if(this.second.world.ifServer() && (ServerWorldScreen.gameStart == false|| 
-                    ServerWorldScreen.gamePause == true || second.selected == true)){
-                        synchronized(this.second){
+                    ServerWorldScreen.gamePause == true)){
+                        synchronized(second){
                             try{
                                 this.second.wait();
                             }
@@ -328,7 +330,7 @@ public class Second extends Creature {
                         }
                     }
                     else if((this.second.world.ifServer() == false)&& (WorldScreen.gameStart == false || 
-                    WorldScreen.gamePause == true || this.second.selected == true)){
+                    WorldScreen.gamePause == true)){
                         synchronized(second){
                             try{
                                 this.second.wait();

@@ -27,6 +27,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
+import javax.swing.plaf.synth.SynthEditorPaneUI;
 
 import com.example.thing.*;
 
@@ -37,8 +38,8 @@ import com.example.asciiPanel.AsciiPanel;
 
 public class ClientWorldScreen implements Screen {
 
-    volatile public static boolean gameStart = false;
-    volatile public static boolean gamePause = false;
+    volatile public boolean gameStart = false;
+    volatile public boolean gamePause = false;
     private World world;
     // Player player;
     Shop shop = null;
@@ -47,6 +48,7 @@ public class ClientWorldScreen implements Screen {
     int index = 0;
     int cost = 500;
     List<Button> buttons = new ArrayList<>();
+    boolean team;
     int buttonIndex = 0;
 
     private void makeTeam(){
@@ -73,7 +75,7 @@ public class ClientWorldScreen implements Screen {
             // readChannel.connect(new InetSocketAddress(8888));
             world = new World();
             selector = Selector.open();
-            byteBuffer = ByteBuffer.allocate(128);
+            byteBuffer = ByteBuffer.allocate(1024);
             writeChannel = SocketChannel.open();
             writeChannel.connect(new InetSocketAddress(8888));
             if(writeChannel.isConnected()){
@@ -148,7 +150,7 @@ public class ClientWorldScreen implements Screen {
         String temp = charBuffer.toString();
         
         String[] Process = temp.split("\n");
-        // System.out.println("length:" + Process.length + "\ntemp:" + temp);
+        System.out.println("length:" + Process.length + "\ntemp:" + temp);
         int index = 0;
         for(int i = 0; i < Process.length; i++){
             if(temp.charAt(index + Process[i].length()) == '\n'){
@@ -173,89 +175,12 @@ public class ClientWorldScreen implements Screen {
     }
 
     public void writeToServer(String t){
+        t = t + "\n";
         if(writeChannel.isConnected()){
             try {
                 ByteBuffer buffer = ByteBuffer.wrap(t.getBytes("utf-8"));
                 writeChannel.write(buffer);
             } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public ClientWorldScreen(String status){
-        // if(status.equals("LOAD GAME")){
-        if(status.equals("LOAD GAME")){
-            BufferedReader inputStream = null;
-            try{
-                world = new World("GameMap.txt");          
-                inputStream = new BufferedReader(new FileReader("GameInfo.txt"));
-                String info;
-                while((info = inputStream.readLine()) != null){
-                    if(info != null){
-                        String[] Info = info.split(" ");
-                        if(Info[0].equals(CreatureAttribute.FIRST)){
-                        // if(Info[0] == CreatureAttribute.FIRST){
-                            // First temp = new First(world, Integer.valueOf(Info[1]), Integer.valueOf(Info[2]), Info[3], Integer.valueOf(Info[4]));
-                            // if(Info[3].equals(CreatureAttribute.BLUETEAM)){
-                            if(Info[3].equals(CreatureAttribute.BLUETEAM)){
-                                First temp = new First(world, Integer.valueOf(Info[1]), Integer.valueOf(Info[2]), CreatureAttribute.BLUETEAM, Integer.valueOf(Info[4]));
-                                temp.setHP(Integer.valueOf(Info[5]));
-                                world.addBlue(temp);
-                            }
-                            else{
-                                First temp = new First(world, Integer.valueOf(Info[1]), Integer.valueOf(Info[2]), CreatureAttribute.REDTEAM, Integer.valueOf(Info[4]));
-                                temp.setHP(Integer.valueOf(Info[5]));
-                                world.addRed(temp);
-                            }
-                        }
-                        else if(Info[0].equals(CreatureAttribute.SECOND)){
-                            if(Info[3].equals(CreatureAttribute.BLUETEAM)){
-                                Second temp = new Second(world, Integer.valueOf(Info[1]), Integer.valueOf(Info[2]), CreatureAttribute.BLUETEAM, Integer.valueOf(Info[4]));
-                                temp.setHP(Integer.valueOf(Info[5]));
-                                world.addBlue(temp);
-                            }
-                            else{
-                                Second temp = new Second(world, Integer.valueOf(Info[1]), Integer.valueOf(Info[2]), CreatureAttribute.REDTEAM, Integer.valueOf(Info[4]));
-                                temp.setHP(Integer.valueOf(Info[5]));
-                                world.addRed(temp);
-                            }
-                        }
-                        else if(Info[0].equals(CreatureAttribute.BULLET)){
-                            if(Info[3].equals(CreatureAttribute.BLUETEAM)){
-                                Thing owner = world.findInBlue(Integer.valueOf(Info[7]));
-                                if(owner != null){
-                                    Bullet temp = new Bullet(owner, Integer.valueOf(Info[5]), Integer.valueOf(Info[6]));
-                                    temp.setxPos(Integer.valueOf(Info[1]));
-                                    temp.setyPos(Integer.valueOf(Info[2]));
-                                    temp.setCode(Integer.valueOf(Info[4]));
-                                    owner.addBullet(temp);
-                                }
-                            }
-                            else{
-                                Thing owner = world.findInRed(Integer.valueOf(Info[7]));
-                                if(owner != null){
-                                    Bullet temp = new Bullet(owner, Integer.valueOf(Info[5]), Integer.valueOf(Info[6]));
-                                    temp.setxPos(Integer.valueOf(Info[1]));
-                                    temp.setyPos(Integer.valueOf(Info[2]));
-                                    temp.code = Integer.valueOf(Info[4]);
-                                    owner.addBullet(temp);
-                                }
-                            }
-                        }
-                    }
-                }
-                if(inputStream != null)
-                    inputStream.close();
-                inputStream = new BufferedReader(new FileReader("GameStatus.txt"));
-                while((info = inputStream.readLine()) != null){
-                    String[] Info = info.split(" ");
-                    this.cost = Integer.valueOf(Info[0]);
-                }
-                if(inputStream != null)
-                inputStream.close();
-            }
-            catch (IOException e){
                 e.printStackTrace();
             }
         }
@@ -280,7 +205,10 @@ public class ClientWorldScreen implements Screen {
     private void displayCreature(AsciiPanel terminal){
         for (int x = 0; x < World.WIDTH; x++) {
             for (int y = 0; y < World.HEIGHT; y++) {
-                terminal.write(world.get(x, y).getGlyph(), x, y, world.get(x, y).getColor());
+                // if(!(world.getBackground(x, y).getName().equals("Floor") || world.getBackground(x, y).getName().equals("Wall"))){
+                //     System.out.println(world.getBackground(x, y).getName() + " " + x + " " + y);
+                // }
+                terminal.write(world.getBackground(x, y).getGlyph(), x, y, world.get(x, y).getColor());
             }
         }
         for (Creature t : world.getBlue()) {
@@ -341,13 +269,14 @@ public class ClientWorldScreen implements Screen {
     
     @Override
     public Screen respondToUserInput(KeyEvent key) {
-        // System.out.println(key.getKeyCode());
         if (this.gameStart == false) {
-            switch (key.getKeyCode()) {
-                case KeyEvent.VK_ENTER:
-                    this.gameStart();
-                    break;
-            }
+            // switch (key.getKeyCode()) {
+            //     case KeyEvent.VK_ENTER:
+            //         this.gameStart();
+            //         break;
+            // }
+            String process = "Key GameStart";
+            writeToServer(process);
         }
         else if(this.gamePause == true){
             handleInputGameIsPause(key);
@@ -369,30 +298,36 @@ public class ClientWorldScreen implements Screen {
         else{
             switch (key.getKeyCode()) {
                 case KeyEvent.VK_LEFT:
-                    player.moveLeft();
+                    // player.moveLeft();
+                    writeToServer("Key LEFT");
                     break;
                 case KeyEvent.VK_RIGHT:
-                    player.moveRight();
+                    // player.moveRight();
+                    writeToServer("Key RIGHT");
                     break;
                 case KeyEvent.VK_UP:
-                    player.moveUp();
+                    // player.moveUp();
+                    writeToServer("Key UP");
                     break;
                 case KeyEvent.VK_DOWN:
-                    player.moveDown();
+                    // player.moveDown();
+                    writeToServer("Key DOWN");
                     break;
                 case KeyEvent.VK_SPACE:
-                    player.Attack();
+                    // player.Attack();
+                    writeToServer("Key Attack");
                     break;
                 case KeyEvent.VK_Q:
-                    this.UnselectPlayer();
+                    // this.UnselectPlayer();
+                    writeToServer("Key Q");
                     break;
-                case KeyEvent.VK_ESCAPE:
-                    if (this.gamePause == false) {
-                        gamePause();
-                    } else {
-                        gameUnPause();
-                    }
-                    break;
+                // case KeyEvent.VK_ESCAPE:
+                //     if (this.gamePause == false) {
+                //         gamePause();
+                //     } else {
+                //         gameUnPause();
+                //     }
+                //     break;
             }
         }
     }
@@ -401,29 +336,44 @@ public class ClientWorldScreen implements Screen {
         switch (key.getKeyCode()) {
             case KeyEvent.VK_UP:
                 if(this.world.getRed().size() > 0){
-                    index = (index - 1 + this.world.getRed().size()) % this.world.getRed().size();
-                    this.ChoosePlayer(this.world.getRed().get(index % this.world.getRed().size()));
+                    if(this.team == true){
+                        index = (index - 1 + this.world.getRed().size()) % this.world.getRed().size();
+                        this.ChoosePlayer(this.world.getRed().get(index % this.world.getRed().size()));
+                    }
+                    else{
+                        index = (index - 1 + this.world.getBlue().size()) % this.world.getBlue().size();
+                        this.ChoosePlayer(this.world.getBlue().get(index % this.world.getBlue().size()));
+                    }
                 }
                 break;
             case KeyEvent.VK_DOWN:
             if(this.world.getRed().size() > 0){
-                index = (index + 1 + this.world.getRed().size()) % this.world.getRed().size();
-                this.ChoosePlayer(this.world.getRed().get(index % this.world.getRed().size()));
+                if(this.team == true){
+                    index = (index + 1 + this.world.getRed().size()) % this.world.getRed().size();
+                    this.ChoosePlayer(this.world.getRed().get(index % this.world.getRed().size()));
+                }
+                else{
+                    index = (index + 1 + this.world.getBlue().size()) % this.world.getBlue().size();
+                    this.ChoosePlayer(this.world.getBlue().get(index % this.world.getBlue().size()));
+                }
             }
                 break;
             case KeyEvent.VK_ENTER:
                 if (choose != null && choose.ifExist()) {
                     player = choose;
                     player.Select();
+                    String process = "Key SelectPlayer " +  choose.getCode();
+                    // choose.getTeam() + " " + choose.getName() + " " +
+                    writeToServer(process);
                 }
                 break;
-            case KeyEvent.VK_ESCAPE:
-                if (this.gamePause == false) {
-                    gamePause();
-                } else {
-                    gameUnPause();
-                }
-                break;
+            // case KeyEvent.VK_ESCAPE:
+            //     if (this.gamePause == false) {
+            //         gamePause();
+            //     } else {
+            //         gameUnPause();
+            //     }
+            //     break;
         }
     }
 
@@ -552,26 +502,39 @@ public class ClientWorldScreen implements Screen {
                 else{
                     this.shop = null;
                 }
+                String mouseProcess = "Mouse " + x + " " + y;
+                writeToServer(mouseProcess);
             }
             else{
                 Thing temp = this.world.get(x, y);
                 // if(temp.getName().equals(CreatureAttribute.FLOOR)){                
-                if(temp.getName() == CreatureAttribute.FLOOR){     
-                    if(this.shop != null && cost >= shop.cost()){
-                        switch(this.shop){
-                            case Lancer:
-                                First f = new First(world, x, y, CreatureAttribute.REDTEAM);
-                                world.getRed().add(f);
-                                break;
-                            case Archer:
-                                Second s = new Second(world, x, y, CreatureAttribute.REDTEAM);
-                                world.getRed().add(s);
-                                break;
-                        }
+                if(temp.getName() == CreatureAttribute.FLOOR){    
+                    if(shop != null && cost >= shop.cost()){
                         cost -= shop.cost();
+                        String mouseProcess = "Mouse " + x + " " + y;
+                        writeToServer(mouseProcess);
                     }
                 }
             }
+            // else{
+            //     Thing temp = this.world.get(x, y);
+            //     // if(temp.getName().equals(CreatureAttribute.FLOOR)){                
+            //     if(temp.getName() == CreatureAttribute.FLOOR){     
+            //         if(this.shop != null && cost >= shop.cost()){
+            //             switch(this.shop){
+            //                 case Lancer:
+            //                     First f = new First(world, x, y, CreatureAttribute.REDTEAM);
+            //                     world.getRed().add(f);
+            //                     break;
+            //                 case Archer:
+            //                     Second s = new Second(world, x, y, CreatureAttribute.REDTEAM);
+            //                     world.getRed().add(s);
+            //                     break;
+            //             }
+            //             cost -= shop.cost();
+            //         }
+            //     }
+            // }
         }
         return this;
     }
@@ -631,18 +594,29 @@ public class ClientWorldScreen implements Screen {
     private void handleProcess(String process){
         // System.out.println(process);
         String[] Process = process.split(" ");
-        if(Process[0].equals("Create")){
-            this.handleCreate(Process);
+        switch(Process[0]){
+            case "Create":this.handleCreate(Process);break;
+            case "Move":this.handleMove(Process);break;
+            case "Attack":this.handleAttack(Process);break;
+            case "Dead":this.handleDead(Process);break;
+            case "Ready":this.handleReady(Process);break;
+            case "Client":this.handleClient(Process[1]);break;
         }
-        else if(Process[0].equals("Move")){
-            this.handleMove(Process);
-        }
-        else if(Process[0].equals("Attack")){
-            this.handleAttack(Process);
-        }
-        else if(Process[0].equals("Dead")){
-            this.handleDead(Process);
-        }
+        // if(Process[0].equals("Create")){
+        //     this.handleCreate(Process);
+        // }
+        // else if(Process[0].equals("Move")){
+        //     this.handleMove(Process);
+        // }
+        // else if(Process[0].equals("Attack")){
+        //     this.handleAttack(Process);
+        // }
+        // else if(Process[0].equals("Dead")){
+        //     this.handleDead(Process);
+        // }
+        // else if(Process[0].equals("Ready")){
+        //     this.handleReady(Process);
+        // }
     }    
 
     private void handleCreate(String[] Process){
@@ -696,17 +670,23 @@ public class ClientWorldScreen implements Screen {
         }
         else{
             if(Process[1].equals(CreatureAttribute.REDTEAM)){
-                Thing temp = world.findInRed(Integer.valueOf(Process[6])).findBullet(Integer.valueOf(Process[3]));
-                if(temp != null){
-                    temp.setxPos(temp.getX()+Integer.valueOf(Process[4]));
-                    temp.setyPos(temp.getY()+Integer.valueOf(Process[5]));
+                Thing owner = world.findInRed(Integer.valueOf(Process[6]));
+                if(owner != null){
+                    Thing temp = owner.findBullet(Integer.valueOf(Process[3]));
+                    if(temp != null){
+                        temp.setxPos(temp.getX()+Integer.valueOf(Process[4]));
+                        temp.setyPos(temp.getY()+Integer.valueOf(Process[5]));
+                    }
                 }
             }
             else{
-                Thing temp = world.findInBlue(Integer.valueOf(Process[6])).findBullet(Integer.valueOf(Process[3]));
-                if(temp != null){
-                    temp.setxPos(temp.getX()+Integer.valueOf(Process[4]));
-                    temp.setyPos(temp.getY()+Integer.valueOf(Process[5]));
+                Thing owner = world.findInBlue(Integer.valueOf(Process[6]));
+                if(owner != null){
+                    Thing temp = owner.findBullet(Integer.valueOf(Process[3]));
+                    if(temp != null){
+                        temp.setxPos(temp.getX()+Integer.valueOf(Process[4]));
+                        temp.setyPos(temp.getY()+Integer.valueOf(Process[5]));
+                    }
                 }
             }
         }
@@ -716,16 +696,30 @@ public class ClientWorldScreen implements Screen {
         if(Process[2].equals(CreatureAttribute.SECOND) == false){
             if(Process[2].equals(CreatureAttribute.BULLET)){
                 if(Process[1].equals(CreatureAttribute.REDTEAM)){
-                    Thing attacker = world.findInRed(Integer.valueOf(Process[4])).findBullet(Integer.valueOf(Process[3]));
-                    Thing victim = world.findInBlue(Integer.valueOf(Process[7]));
-                    if(attacker != null && victim != null)
+                    Thing owner = world.findInRed(Integer.valueOf(Process[4]));
+                    if(owner != null){
+                        Thing attacker = owner.findBullet(Integer.valueOf(Process[3]));
+                        Thing victim = world.findInBlue(Integer.valueOf(Process[7]));
+                        if(attacker != null && victim != null)
                         attacker.Attack(victim);
+                    }
+                    // Thing attacker = world.findInRed(Integer.valueOf(Process[4])).findBullet(Integer.valueOf(Process[3]));
+                    // Thing victim = world.findInBlue(Integer.valueOf(Process[7]));
+                    // if(attacker != null && victim != null)
+                    //     attacker.Attack(victim);
                 }
                 else{
-                    Thing attacker = world.findInBlue(Integer.valueOf(Process[4])).findBullet(Integer.valueOf(Process[3]));
-                    Thing victim = world.findInRed(Integer.valueOf(Process[7]));
-                    if(attacker != null && victim != null)
+                    Thing owner = world.findInBlue(Integer.valueOf(Process[4]));
+                    if(owner != null){
+                        Thing attacker = owner.findBullet(Integer.valueOf(Process[3]));
+                        Thing victim = world.findInRed(Integer.valueOf(Process[7]));
+                        if(attacker != null && victim != null)
                         attacker.Attack(victim);
+                    }
+                    // Thing attacker = world.findInBlue(Integer.valueOf(Process[4])).findBullet(Integer.valueOf(Process[3]));
+                    // Thing victim = world.findInRed(Integer.valueOf(Process[7]));
+                    // if(attacker != null && victim != null)
+                    //     attacker.Attack(victim);
                 }
             }
             else{
@@ -736,11 +730,21 @@ public class ClientWorldScreen implements Screen {
                         attacker.Attack(victim);
                 }
                 else{
-                    Thing attacker = world.findInRed(Integer.valueOf(Process[3]));
-                    Thing victim = world.findInBlue(Integer.valueOf(Process[6]));
+                    Thing attacker = world.findInBlue(Integer.valueOf(Process[3]));
+                    Thing victim = world.findInRed(Integer.valueOf(Process[6]));
                     if(attacker != null && victim != null)
                         attacker.Attack(victim);
                 }
+            }
+        }
+        else{
+            if(Process[1].equals(CreatureAttribute.REDTEAM)){
+                Thing attacker = world.findInRed(Integer.valueOf(Process[3]));
+                attacker.changeToward(Integer.valueOf(Process[4]));
+            }
+            else{
+                Thing attacker = world.findInBlue(Integer.valueOf(Process[3]));
+                attacker.changeToward(Integer.valueOf(Process[4]));
             }
         }
     }
@@ -748,13 +752,46 @@ public class ClientWorldScreen implements Screen {
     private void handleDead(String[] Process){
         if(Process[2].equals(CreatureAttribute.BULLET)){
             if(Process[1].equals(CreatureAttribute.REDTEAM)){
-                Thing temp = world.findInRed(Integer.valueOf(Process[4])).findBullet(Integer.valueOf(Process[3]));
-                temp.beDead();
+                Thing owner = world.findInRed(Integer.valueOf(Process[4]));
+                if(owner != null){
+                    Thing temp = owner.findBullet(Integer.valueOf(Process[3]));
+                    if(temp != null){
+                        temp.beDead();
+                    }
+                }
             }
             else{
-                Thing temp = world.findInBlue(Integer.valueOf(Process[4])).findBullet(Integer.valueOf(Process[3]));
-                temp.beDead();
+                Thing owner = world.findInBlue(Integer.valueOf(Process[4]));
+                if(owner != null){
+                    Thing temp = owner.findBullet(Integer.valueOf(Process[3]));
+                    if(temp != null){
+                        temp.beDead();
+                    }
+                }
             }
+            // if(Process[1].equals(CreatureAttribute.REDTEAM)){
+            //     Thing temp = world.findInRed(Integer.valueOf(Process[4])).findBullet(Integer.valueOf(Process[3]));
+            //     temp.beDead();
+            // }
+            // else{
+            //     Thing temp = world.findInBlue(Integer.valueOf(Process[4])).findBullet(Integer.valueOf(Process[3]));
+            //     temp.beDead();
+            // }
+        }
+    }
+
+    public void handleReady(String[] Process){
+        if(Process[1].equals("GameStart")){
+            this.gameStart = true;
+        }
+    }
+
+    public void handleClient(String client){
+        if(client.equals("client1")){
+            this.team = true;
+        }
+        else{
+            this.team = false;
         }
     }
 }

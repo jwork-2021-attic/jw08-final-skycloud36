@@ -32,9 +32,10 @@ public class ServerWorldScreen implements Screen {
     volatile public static boolean gamePause = false;
     private World world;
     // Player player;
-    Shop shop = null;
-    Creature player = null;
-    Creature choose = null;
+    Shop client1Shop = null;
+    Shop client2Shop = null;
+    Creature client1choose = null;
+    Creature client2choose = null;
     int index = 0;
     int cost = 500;
     List<Button> buttons = new ArrayList<>();
@@ -44,24 +45,31 @@ public class ServerWorldScreen implements Screen {
     
     
     public void makeTeam(){
-        Second b1 = new Second(world, 70, 27,CreatureAttribute.BLUETEAM);   world.addBlue(b1);
-        Second b2 = new Second(world, 70, 16,CreatureAttribute.BLUETEAM);    world.addBlue(b2);
-        Second b3 = new Second(world, 70, 19,CreatureAttribute.BLUETEAM);    world.addBlue(b3);
-        Second b4 = new Second(world, 70, 2,CreatureAttribute.BLUETEAM);   world.addBlue(b4);
-        Second b5 = new Second(world, 70, 6,CreatureAttribute.BLUETEAM);    world.addBlue(b5);
-        Second b6 = new Second(world, 70, 35,CreatureAttribute.BLUETEAM);    world.addBlue(b6);
-        First b7 = new First(world, 40, 20,CreatureAttribute.BLUETEAM);   world.addBlue(b7);
+        Second b1 = new Second(world, 70, 27, CreatureAttribute.BLUETEAM);   world.addBlue(b1);
+        Second b2 = new Second(world, 70, 16, CreatureAttribute.BLUETEAM);    world.addBlue(b2);
+        Second b3 = new Second(world, 70, 19, CreatureAttribute.BLUETEAM);    world.addBlue(b3);
+        // Second b4 = new Second(world, 70, 2,CreatureAttribute.BLUETEAM);   world.addBlue(b4);
+        // Second b5 = new Second(world, 70, 6,CreatureAttribute.BLUETEAM);    world.addBlue(b5);
+        // Second b6 = new Second(world, 70, 35,CreatureAttribute.BLUETEAM);    world.addBlue(b6);
+        Second r4 = new Second(world, 30, 2, CreatureAttribute.REDTEAM);   world.addRed(r4);
+        Second r5 = new Second(world, 30, 6, CreatureAttribute.REDTEAM);    world.addRed(r5);
+        Second r6 = new Second(world, 30, 35, CreatureAttribute.REDTEAM);    world.addRed(r6);
+
+        First b7 = new First(world, 40, 20, CreatureAttribute.BLUETEAM);   world.addBlue(b7);
         First b8 = new First(world, 40, 21, CreatureAttribute.BLUETEAM);     world.addBlue(b8);
-        First b9 = new First(world, 40, 25,CreatureAttribute.BLUETEAM);   world.addBlue(b9);
-        First b10 = new First(world, 40, 18, CreatureAttribute.BLUETEAM);     world.addBlue(b10);
+        // First b9 = new First(world, 40, 25,CreatureAttribute.BLUETEAM);   world.addBlue(b9);
+        // First b10 = new First(world, 40, 18, CreatureAttribute.BLUETEAM);     world.addBlue(b10);
+        First r9 = new First(world, 20, 25, CreatureAttribute.REDTEAM);   world.addRed(r9);
+        First r10 = new First(world, 20, 18, CreatureAttribute.REDTEAM);     world.addRed(r10);
     }
 
     public ServerWorldScreen(Server server) {
         this.server = server;
+        client1Shop = null; client1Ready = false;
+        client2Shop = null; client2Ready = false;
+        client1player = null;
+        client2player = null;
         world = new World(true, server);
-        // makeTeam();
-        // gameStart();
-        // server.writeToClient(World.WIDTH + " " + World.HEIGHT);
     }
 
     public ServerWorldScreen(boolean record) {
@@ -70,81 +78,9 @@ public class ServerWorldScreen implements Screen {
 
     @Override
     public void displayOutput(AsciiPanel terminal) {
-        // if(terminal.hasFocus() == false){
-        //     System.out.println("world");
-        //     terminal.requestFocus(true);
-        // }
-        displayCreature(terminal);
-        displayPlayer(terminal);
-        if (this.gameStart == false) {
-            displayShop(terminal);
-        }
-        if (this.gamePause == true) {
-            displayPause(terminal);
-        }
+
     }
 
-    private void displayCreature(AsciiPanel terminal){
-        for (int x = 0; x < World.WIDTH; x++) {
-            for (int y = 0; y < World.HEIGHT; y++) {
-                terminal.write(world.get(x, y).getGlyph(), x, y, world.get(x, y).getColor());
-            }
-        }
-        for (Creature t : world.getBlue()) {
-            t.disPlayout(terminal);
-        }
-        for (Creature t : world.getRed()) {
-            t.disPlayout(terminal);
-        }
-    }
-
-    private void displayPlayer(AsciiPanel terminal){
-        String stats;
-        if (player != null) {
-            stats = String.format("Team:%s", player.getTeam());
-            terminal.write(stats, 1, world.HEIGHT);
-            stats = String.format("Creatures:%s", player.getName());
-            terminal.write(stats, 1, world.HEIGHT + 1);
-            stats = String.format("%3d/%3d hp", player.getHP(), player.getMaxHP());
-            terminal.write(stats, 1, world.HEIGHT + 2);
-        } else {
-            stats = String.format("Player is null");
-            terminal.write(stats, 1, world.HEIGHT);
-        }
-    }
-
-    private void displayShop(AsciiPanel terminal){
-        String stats;
-        for(Shop item : Shop.values()){
-            for(int i = 0; i < item.info().size(); i++){
-                terminal.write(item.info().get(i), item.ordinal()*10, world.HEIGHT+i);
-            }
-        }
-        if(shop != null){
-            terminal.write(shop.name(), 30, world.HEIGHT);
-        }
-        else{
-            terminal.write("null", 30, world.HEIGHT);
-        }
-        stats = String.format("Money %3d Left",this.cost);
-        terminal.write(stats, 30, world.HEIGHT+1);
-        terminal.write("After Set Your Army, Press Enter To Play", 30, world.HEIGHT+2);
-    }
-
-    private void displayPause(AsciiPanel terminal){
-        String stats;
-        stats = String.format("Game Pause");
-        terminal.write(stats, world.WIDTH / 2 - 5, world.HEIGHT / 2 - 5);
-        if(buttons.size() == 0){
-            Button b1 = new Button("CONTINUE", 25, 21, Color.WHITE, Color.GRAY, terminal);
-            Button b2 = new Button("SAVE GAME", 25, 23, terminal);
-            buttons.add(b1);
-            buttons.add(b2);
-        }
-        for(Button b : buttons){
-            b.display();
-        }
-    }
     
     @Override
     public Screen respondToUserInput(KeyEvent key) {
@@ -160,7 +96,7 @@ public class ServerWorldScreen implements Screen {
             handleInputGameIsPause(key);
         } 
         else {
-            if (player != null) {
+            if (client1player != null) {
                 handleInputPlayerNotNull(key);
             } else {
                 handleInputPlayerIsNull(key);
@@ -170,25 +106,25 @@ public class ServerWorldScreen implements Screen {
     }
 
     private void handleInputPlayerNotNull(KeyEvent key){
-        if (player.ifExist() == false) {
+        if (client1player.ifExist() == false) {
             UnselectPlayer();
         }
         else{
             switch (key.getKeyCode()) {
                 case KeyEvent.VK_LEFT:
-                    player.moveLeft();
+                    client1player.moveLeft();
                     break;
                 case KeyEvent.VK_RIGHT:
-                    player.moveRight();
+                    client1player.moveRight();
                     break;
                 case KeyEvent.VK_UP:
-                    player.moveUp();
+                    client1player.moveUp();
                     break;
                 case KeyEvent.VK_DOWN:
-                    player.moveDown();
+                    client1player.moveDown();
                     break;
                 case KeyEvent.VK_SPACE:
-                    player.Attack();
+                    client1player.Attack();
                     break;
                 case KeyEvent.VK_Q:
                     this.UnselectPlayer();
@@ -219,9 +155,9 @@ public class ServerWorldScreen implements Screen {
             }
                 break;
             case KeyEvent.VK_ENTER:
-                if (choose != null && choose.ifExist()) {
-                    player = choose;
-                    player.Select();
+                if (client1choose != null && client1choose.ifExist()) {
+                    client1player = client1choose;
+                    client1player.Select();
                 }
                 break;
             case KeyEvent.VK_ESCAPE:
@@ -291,7 +227,7 @@ public class ServerWorldScreen implements Screen {
                 t.notifyAll();
             }
         }        
-        if (choose == null || !choose.ifExist()) {
+        if (client1choose == null || !client1choose.ifExist()) {
             if (this.world.getRed().size() > 0) {
                 this.ChoosePlayer(this.world.getRed().get(0));
             }
@@ -317,70 +253,33 @@ public class ServerWorldScreen implements Screen {
     }
 
     void ChoosePlayer(Creature c) {
-        if (this.choose != null) {
-            choose.UnChoose();
+        if (this.client1choose != null) {
+            client1choose.UnChoose();
         }
-        choose = c;
-        choose.Choose();
+        client1choose = c;
+        client1choose.Choose();
     }
 
     void SelectPlayer() {
-        player = choose;
-        player.Select();
+        client1player = client1choose;
+        client1player.Select();
     }
 
     void UnselectPlayer() {
-        if (this.player != null) {
-            synchronized (player) {
-                player.UnSelect();
-                player.notifyAll();
+        if (this.client1player != null) {
+            synchronized (client1player) {
+                client1player.UnSelect();
+                client1player.notifyAll();
             }
-            if (player.ifExist() == true) {
-                this.ChoosePlayer(player);
+            if (client1player.ifExist() == true) {
+                this.ChoosePlayer(client1player);
             } else {
                 if (this.world.getRed().size() > 0) {
                     this.ChoosePlayer(this.world.getRed().get(0));
                 }
             }
         }
-        player = null;
-    }
-
-    @Override
-    public Screen respondToUserMouse(MouseEvent mouseEvent) {
-        if(gameStart == false){
-            int x = cursorxToWorldx(mouseEvent.getX());
-            int y = cursoryToWorldy(mouseEvent.getY());
-            if(y >= world.HEIGHT){
-                int index = x / 10;
-                if(index < Shop.values().length){
-                    this.shop = Shop.values()[index];
-                }
-                else{
-                    this.shop = null;
-                }
-            }
-            else{
-                Thing temp = this.world.get(x, y);
-                // if(temp.getName().equals(CreatureAttribute.FLOOR)){                
-                if(temp.getName() == CreatureAttribute.FLOOR){     
-                    if(this.shop != null && cost >= shop.cost()){
-                        switch(this.shop){
-                            case Lancer:
-                                First f = new First(world, x, y, CreatureAttribute.REDTEAM);
-                                world.getRed().add(f);
-                                break;
-                            case Archer:
-                                Second s = new Second(world, x, y, CreatureAttribute.REDTEAM);
-                                world.getRed().add(s);
-                                break;
-                        }
-                        cost -= shop.cost();
-                    }
-                }
-            }
-        }
-        return this;
+        client1player = null;
     }
 
     int cursorxToWorldx(int x) {
@@ -432,6 +331,185 @@ public class ServerWorldScreen implements Screen {
         finally{
             if(outputStream != null)
                 outputStream.close();
+        }
+    }
+
+    public void handleProcess(String process){
+        String[] Process = process.split(" ");
+        if(Process[1].equals("Mouse")){
+            handleMouse(Process);
+        }
+        if(Process[1].equals("Key")){
+            switch(Process[2]){
+                case "GameStart":handleGameStart(Process[0]);break;
+                case "SelectPlayer":handleSelectPlayer(Process);break;
+                case "UP":handleUp(Process);break;
+                case "DOWN":handleDown(Process);break;
+                case "LEFT":handleLeft(Process);break;
+                case "RIGHT":handleRight(Process);break;
+                case "Attack":handleAttack(Process);break;
+            }
+            // handleKey(Process);
+        }
+    }
+
+    public void handleMouse(String[] Process){
+        if(gameStart == false){
+            int x = Integer.valueOf(Process[2]);
+            int y = Integer.valueOf(Process[3]);
+            // System.out.println("x: " + x + " y: " + y);
+            Shop shop = null;
+            if(Process[0].equals("1")){
+                shop = client1Shop;
+            }
+            else{
+                shop = client2Shop;
+            }
+            if(y >= world.HEIGHT){
+                int index = x / 10;
+                if(index < Shop.values().length){
+                    shop = Shop.values()[index];
+                    // System.out.println(this.shop);
+                }
+                else{
+                    shop = null;
+                }
+            }
+            else{
+                Thing temp = this.world.get(x, y);
+                // if(temp.getName().equals(CreatureAttribute.FLOOR)){                
+                if(temp.getName() == CreatureAttribute.FLOOR){     
+                    if(shop != null){
+                        switch(shop){
+                            case Lancer:
+                                if(Process[0].equals("1")){
+                                    First f = new First(world, x, y, CreatureAttribute.REDTEAM);
+                                    world.getRed().add(f);
+                                }
+                                else{
+                                    First f = new First(world, x, y, CreatureAttribute.BLUETEAM);
+                                    world.getBlue().add(f);
+                                }
+                                break;
+                            case Archer:
+                            if(Process[0].equals("1")){
+                                Second f = new Second(world, x, y, CreatureAttribute.REDTEAM);
+                                world.getRed().add(f);
+                            }
+                            else{
+                                Second f = new Second(world, x, y, CreatureAttribute.BLUETEAM);
+                                world.getBlue().add(f);
+                            }
+                                break;
+                        }
+                        // cost -= shop.cost();
+                    }
+                }
+            }
+            if(Process[0].equals("1")){
+                client1Shop = shop;
+            }
+            else{
+                client2Shop = shop;
+            }
+        }
+    }
+
+    // public void handleKey(Process){
+
+    // }
+    private boolean client1Ready;
+    private boolean client2Ready;
+
+    public void handleGameStart(String client){
+        if(client.equals("1")){
+            client1Ready = true;
+            server.writeToClient("Ready Client1");
+        }
+        else{
+            client2Ready = true;
+            server.writeToClient("Ready Client2");
+        }
+        if(client1Ready && client2Ready){
+            gameStart();
+            server.writeToClient("Ready GameStart");
+        }
+    }
+
+    Creature client1player;
+    Creature client2player;
+    
+    public void handleSelectPlayer(String[] Process){
+        if(Process[0].equals("1")){
+            Thing creature = world.findInRed(Integer.valueOf(Process[3]));
+            if(client1player != null && client1player.ifExist()){
+                synchronized (client1player) {
+                    client1player.UnSelect();
+                    client1player.notifyAll();
+                }
+            }
+            if(creature != null && creature.ifExist()){
+                creature.Select();
+                client1player = (Creature)creature;
+            }
+        }
+        else{
+            Thing creature = world.findInBlue(Integer.valueOf(Process[3]));
+            if(client2player != null && client2player.ifExist()){
+                synchronized (client2player) {
+                    client2player.UnSelect();
+                    client2player.notifyAll();
+                }
+            }
+            if(creature != null && creature.ifExist()){
+                creature.Select();
+                client2player = (Creature)creature;
+            }
+        }
+    }
+
+    public void handleUp(String[] Process){
+        if(Process[0].equals("1")){
+            client1player.moveUp();
+        }
+        else{
+            client2player.moveUp();
+        }
+    }
+
+    public void handleDown(String[] Process){
+        if(Process[0].equals("1")){
+            client1player.moveDown();
+        }
+        else{
+            client2player.moveDown();
+        }
+    }
+
+    public void handleLeft(String[] Process){
+        if(Process[0].equals("1")){
+            client1player.moveLeft();
+        }
+        else{
+            client2player.moveLeft();
+        }
+    }
+
+    public void handleRight(String[] Process){
+        if(Process[0].equals("1")){
+            client1player.moveRight();
+        }
+        else{
+            client2player.moveRight();
+        }
+    }
+
+    public void handleAttack(String[] Process){
+        if(Process[0].equals("1")){
+            client1player.Attack();
+        }
+        else{
+            client2player.Attack();
         }
     }
 }

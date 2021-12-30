@@ -213,8 +213,8 @@ public class First extends Creature{
         synchronized(this){
             if(DebugFirstBeAttacked){
                 System.out.println(this.getTeam() + " " + this.getName()
-                + " be attacked by " 
-                + attacker.getTeam() + " " + attacker.getName()
+                + " " + this.getCode() + " be attacked by " 
+                + attacker.getTeam() + " " + attacker.getName() + " " + attacker.getCode()
                 + " " + attacker.getATK());
             }
             this.HP -= attacker.getATK() - this.getDefence();
@@ -222,6 +222,9 @@ public class First extends Creature{
                 this.HP = 0;
                 this.beDead();
             }
+            // else{
+            //     System.out.println(this.getTeam() + " " + this.getName() + " " + this.getCode() + " HP:" + this.getHP());
+            // }
             // if(world.ifRecord() == true){
             //     String process = "BeAttack" + " " + this.team + " " + this.name + " " + this.code
             //                     + " " + attacker.getTeam() + " " + attacker.getName() + " " + attacker.getCode();
@@ -282,6 +285,7 @@ public class First extends Creature{
     @Override
     public void disPlayout(AsciiPanel terminal){
         if(this.ifExist())
+            // System.out.println(this.getTeam() + " " + this.getName() + " " + this.getCode() + " is alive");
             terminal.write(this.getGlyph(), this.getX(), this.getY(), this.getColor());
     }
 
