@@ -87,20 +87,22 @@ public class Server {
                             // handleSocketByThread(socketChannel);
                             client1.configureBlocking(false);
                             client1.register(selector, SelectionKey.OP_READ);
-                            ByteBuffer buffer;
-                            buffer = ByteBuffer.wrap("Client client1\n".getBytes("utf-8"));
-                            client1.write(buffer);
-                            System.out.println(client1.getRemoteAddress());
+                            // ByteBuffer buffer;
+                            // buffer = ByteBuffer.wrap("Client client1\n".getBytes("utf-8"));
+                            // client1.write(buffer);
+                            // System.out.println(client1.getRemoteAddress());
+                            writeToClient("Client client1");
                         }
                         else if(client2 == null || client2.isConnected() == false){
                             client2 = socketChannel;
                             // handleSocketByThread(socketChannel);
                             client2.configureBlocking(false);
                             client2.register(selector, SelectionKey.OP_READ);
-                            ByteBuffer buffer;
-                            buffer = ByteBuffer.wrap("Client client2\n".getBytes("utf-8"));
-                            client2.write(buffer);
-                            System.out.println(client2.getRemoteAddress());
+                            // ByteBuffer buffer;
+                            // buffer = ByteBuffer.wrap("Client client2\n".getBytes("utf-8"));
+                            // client2.write(buffer);
+                            // System.out.println(client2.getRemoteAddress());
+                            writeToClient("Client client2");
                         }
                     }
                     if(key.isReadable()){
@@ -196,6 +198,14 @@ public class Server {
                 // CharBuffer charBuffer = charset.decode(buffer);
                 // String temp = charBuffer.toString();
                 // System.out.print("writeToClient2: " + temp);
+                client2.write(buffer);
+            }
+            t = serverWorldScreen.Finish();
+            if(t != null){
+                t = t + "\n";
+                buffer = ByteBuffer.wrap(t.getBytes("utf-8"));
+                client1.write(buffer);
+                buffer = ByteBuffer.wrap(t.getBytes("utf-8"));
                 client2.write(buffer);
             }
         }

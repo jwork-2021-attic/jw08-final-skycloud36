@@ -47,22 +47,15 @@ public class ClientWorldScreen implements Screen {
     Creature choose = null;
     int index = 0;
     int cost = 500;
-    List<Button> buttons = new ArrayList<>();
-    boolean team;
-    int buttonIndex = 0;
 
-    private void makeTeam(){
-        // Second b1 = new Second(world, 70, 27,CreatureAttribute.BLUETEAM);   world.addBlue(b1);
-        // Second b2 = new Second(world, 70, 16,CreatureAttribute.BLUETEAM);    world.addBlue(b2);
-        // Second b3 = new Second(world, 70, 19,CreatureAttribute.BLUETEAM);    world.addBlue(b3);
-        // Second b4 = new Second(world, 70, 2,CreatureAttribute.BLUETEAM);   world.addBlue(b4);
-        // Second b5 = new Second(world, 70, 6,CreatureAttribute.BLUETEAM);    world.addBlue(b5);
-        // Second b6 = new Second(world, 70, 35,CreatureAttribute.BLUETEAM);    world.addBlue(b6);
-        // First b7 = new First(world, 40, 20,CreatureAttribute.BLUETEAM);   world.addBlue(b7);
-        // First b8 = new First(world, 40, 21, CreatureAttribute.BLUETEAM);     world.addBlue(b8);
-        // First b9 = new First(world, 40, 25,CreatureAttribute.BLUETEAM);   world.addBlue(b9);
-        // First b10 = new First(world, 40, 18, CreatureAttribute.BLUETEAM);     world.addBlue(b10);
-    }
+    List<Button> buttons = new ArrayList<>();
+    int waiting = 0;
+    int team = 0;
+    boolean client1Ready = false;
+    boolean client2Ready = false;
+
+    int finish = 0;
+    int buttonIndex = 0;
 
     SocketChannel readChannel;
     SocketChannel writeChannel;
@@ -71,8 +64,6 @@ public class ClientWorldScreen implements Screen {
 
     public ClientWorldScreen() {
         try {
-            // readChannel = SocketChannel.open();
-            // readChannel.connect(new InetSocketAddress(8888));
             world = new World();
             selector = Selector.open();
             byteBuffer = ByteBuffer.allocate(1024);
@@ -84,8 +75,6 @@ public class ClientWorldScreen implements Screen {
                 handleSocketByThread();
                 writeToServer("hello server\n");
             }
-            // TimeUnit.MILLISECONDS.sleep(1000);
-            // socketChannel.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -105,9 +94,7 @@ public class ClientWorldScreen implements Screen {
         try{
             boolean listen = true;
             while(listen){
-                // System.out.println(111);
                 if(selector.select() == 0){
-                    // System.out.println(222);
                     continue;
                 }
                 Iterator<SelectionKey> it = selector.selectedKeys().iterator();
@@ -116,6 +103,7 @@ public class ClientWorldScreen implements Screen {
                     if(key.isReadable()){
                         SocketChannel socketChannel = (SocketChannel)key.channel();
                         listen = readData(socketChannel);
+                        listen =(writeChannel.isConnected());
                     }
                 }
                 it.remove();
@@ -127,18 +115,24 @@ public class ClientWorldScreen implements Screen {
     }
 
     public boolean readData(SocketChannel socketChannel) throws IOException{
-        int res = socketChannel.read(byteBuffer);
-        if(res > 0){
-            List<String> process = bufToString(byteBuffer);
-            for(int i = 0; i < process.size(); i++){
-                System.out.println(socketChannel.getLocalAddress()+ ":" + process.get(i));
-                handleProcess(process.get(i));
+        if(socketChannel.isConnected()){
+            int res = socketChannel.read(byteBuffer);
+            if(res > 0){
+                List<String> process = bufToString(byteBuffer);
+                for(int i = 0; i < process.size(); i++){
+                    System.out.println(socketChannel.getLocalAddress()+ ":" + process.get(i));
+                    handleProcess(process.get(i));
+                }
+                if(finish != 0){
+                    writeChannel.close();
+                }
             }
+            else if(res == -1){
+                return false;
+            }
+            return true;
         }
-        else if(res == -1){
-            return false;
-        }
-        return true;
+        return false;
     }
 
     public List<String> bufToString(ByteBuffer buf){
@@ -150,7 +144,7 @@ public class ClientWorldScreen implements Screen {
         String temp = charBuffer.toString();
         
         String[] Process = temp.split("\n");
-        System.out.println("length:" + Process.length + "\ntemp:" + temp);
+        // System.out.println("length:" + Process.length + "\ntemp:" + temp);
         int index = 0;
         for(int i = 0; i < Process.length; i++){
             if(temp.charAt(index + Process[i].length()) == '\n'){
@@ -188,18 +182,20 @@ public class ClientWorldScreen implements Screen {
 
     @Override
     public void displayOutput(AsciiPanel terminal) {
-        // if(terminal.hasFocus() == false){
-        //     System.out.println("world");
-        //     terminal.requestFocus(true);
-        // }
         displayCreature(terminal);
-        displayPlayer(terminal);
-        if (this.gameStart == false) {
+        if(waiting == 2){
+            displayPlayer(terminal);
+        }
+        if (waiting == 1) {
+            // if(gameStart == false){
             displayShop(terminal);
         }
-        if (this.gamePause == true) {
-            displayPause(terminal);
+        if(waiting == 0){
+            terminal.write("Waiting for another Player", World.WIDTH/2-15, World.HEIGHT/2, Color.RED, Color.BLACK);
         }
+        // else if(waiting == 1){
+
+        // }
     }
 
     private void displayCreature(AsciiPanel terminal){
@@ -250,38 +246,33 @@ public class ClientWorldScreen implements Screen {
         stats = String.format("Money %3d Left",this.cost);
         terminal.write(stats, 30, world.HEIGHT+1);
         terminal.write("After Set Your Army, Press Enter To Play", 30, world.HEIGHT+2);
-    }
-
-    private void displayPause(AsciiPanel terminal){
-        String stats;
-        stats = String.format("Game Pause");
-        terminal.write(stats, world.WIDTH / 2 - 5, world.HEIGHT / 2 - 5);
-        if(buttons.size() == 0){
-            Button b1 = new Button("CONTINUE", 25, 21, Color.WHITE, Color.GRAY, terminal);
-            Button b2 = new Button("SAVE GAME", 25, 23, terminal);
-            buttons.add(b1);
-            buttons.add(b2);
+        if(client1Ready == false){
+            terminal.write("You Are Not Ready", 30, world.HEIGHT+3, new Color(125, 111, 20));
         }
-        for(Button b : buttons){
-            b.display();
+        else{
+            terminal.write("You Are Ready", 30, world.HEIGHT+3, new Color(255, 111, 20));
+        }
+        if(client2Ready == false){
+            terminal.write("Enemy Is Not Ready", 50, world.HEIGHT+3, new Color(125, 111, 20));
+        }
+        else{
+            terminal.write("Enemy Is Ready", 50, world.HEIGHT+3, new Color(255, 111, 20));
         }
     }
     
     @Override
     public Screen respondToUserInput(KeyEvent key) {
-        if (this.gameStart == false) {
+        if (waiting == 1) {
             // switch (key.getKeyCode()) {
             //     case KeyEvent.VK_ENTER:
             //         this.gameStart();
             //         break;
             // }
             String process = "Key GameStart";
+            client1Ready = true;
             writeToServer(process);
         }
-        else if(this.gamePause == true){
-            handleInputGameIsPause(key);
-        } 
-        else {
+        else if(waiting == 2){
             if (player != null) {
                 handleInputPlayerNotNull(key);
             } else {
@@ -298,36 +289,23 @@ public class ClientWorldScreen implements Screen {
         else{
             switch (key.getKeyCode()) {
                 case KeyEvent.VK_LEFT:
-                    // player.moveLeft();
                     writeToServer("Key LEFT");
                     break;
                 case KeyEvent.VK_RIGHT:
-                    // player.moveRight();
                     writeToServer("Key RIGHT");
                     break;
                 case KeyEvent.VK_UP:
-                    // player.moveUp();
                     writeToServer("Key UP");
                     break;
                 case KeyEvent.VK_DOWN:
-                    // player.moveDown();
                     writeToServer("Key DOWN");
                     break;
                 case KeyEvent.VK_SPACE:
-                    // player.Attack();
                     writeToServer("Key Attack");
                     break;
                 case KeyEvent.VK_Q:
-                    // this.UnselectPlayer();
                     writeToServer("Key Q");
                     break;
-                // case KeyEvent.VK_ESCAPE:
-                //     if (this.gamePause == false) {
-                //         gamePause();
-                //     } else {
-                //         gameUnPause();
-                //     }
-                //     break;
             }
         }
     }
@@ -336,11 +314,11 @@ public class ClientWorldScreen implements Screen {
         switch (key.getKeyCode()) {
             case KeyEvent.VK_UP:
                 if(this.world.getRed().size() > 0){
-                    if(this.team == true){
+                    if(this.team == 1){
                         index = (index - 1 + this.world.getRed().size()) % this.world.getRed().size();
                         this.ChoosePlayer(this.world.getRed().get(index % this.world.getRed().size()));
                     }
-                    else{
+                    else if(this.team == 2){
                         index = (index - 1 + this.world.getBlue().size()) % this.world.getBlue().size();
                         this.ChoosePlayer(this.world.getBlue().get(index % this.world.getBlue().size()));
                     }
@@ -348,11 +326,11 @@ public class ClientWorldScreen implements Screen {
                 break;
             case KeyEvent.VK_DOWN:
             if(this.world.getRed().size() > 0){
-                if(this.team == true){
+                if(this.team == 1){
                     index = (index + 1 + this.world.getRed().size()) % this.world.getRed().size();
                     this.ChoosePlayer(this.world.getRed().get(index % this.world.getRed().size()));
                 }
-                else{
+                else if(this.team == 2){
                     index = (index + 1 + this.world.getBlue().size()) % this.world.getBlue().size();
                     this.ChoosePlayer(this.world.getBlue().get(index % this.world.getBlue().size()));
                 }
@@ -363,82 +341,25 @@ public class ClientWorldScreen implements Screen {
                     player = choose;
                     player.Select();
                     String process = "Key SelectPlayer " +  choose.getCode();
-                    // choose.getTeam() + " " + choose.getName() + " " +
+                    //   + " " +
+                    // choose.getTeam() + " " + choose.getName();
                     writeToServer(process);
                 }
                 break;
-            // case KeyEvent.VK_ESCAPE:
-            //     if (this.gamePause == false) {
-            //         gamePause();
-            //     } else {
-            //         gameUnPause();
-            //     }
-            //     break;
         }
     }
 
-    private void handleInputGameIsPause(KeyEvent key){
-        switch(key.getKeyCode()){
-            case KeyEvent.VK_ESCAPE:
-                gameUnPause();
-                break;
-            case KeyEvent.VK_ENTER:
-                // if(buttons.get(index).getButtonName().equals("CONTINUE"))
-                if(buttons.get(buttonIndex).getButtonName()=="CONTINUE")
-                    this.gameUnPause();
-                // else if(buttons.get(index).getButtonName().equals("SAVE GAME"))
-                else if(buttons.get(buttonIndex).getButtonName()=="SAVE GAME")
-                    try{
-                        this.saveGame();
-                        this.saveMap();
-                        this.saveStatus();
-                    }
-                    catch(IOException e){
-                        e.printStackTrace();
-                    }
-                break;
-            case KeyEvent.VK_DOWN:
-                buttons.get(buttonIndex).unselect();
-                buttonIndex = (buttonIndex+1)%buttons.size();
-                buttons.get(buttonIndex).select();
-                break;
-            case KeyEvent.VK_UP:
-                buttons.get(buttonIndex).unselect();
-                buttonIndex = (buttonIndex-1+buttons.size())%buttons.size();
-                buttons.get(buttonIndex).select();
-                break;
-        }
-    }
     public Screen Finish() {
-        if(gameStart == true){
-            if (this.world.getBlue().size() == 0) {
+        if(finish != 0){
+            if (finish == 1) {
                 gameStart = false;
                 return new WinScreen();
-            } else if (this.world.getRed().size() == 0) {
+            } else if (finish == 2) {
                 gameStart = false;
                 return new LoseScreen();
             }
         }
         return null;
-    }
-
-    public void gameStart() {
-        this.gameStart = true;
-        for (Creature t : world.getBlue()) {
-            synchronized (t) {
-                t.notifyAll();
-            }
-        }
-        for (Creature t : world.getRed()) {
-            synchronized (t) {
-                t.notifyAll();
-            }
-        }        
-        if (choose == null || !choose.ifExist()) {
-            if (this.world.getRed().size() > 0) {
-                this.ChoosePlayer(this.world.getRed().get(0));
-            }
-        }
     }
 
     public void gameUnPause() {
@@ -491,7 +412,7 @@ public class ClientWorldScreen implements Screen {
 
     @Override
     public Screen respondToUserMouse(MouseEvent mouseEvent) {
-        if(gameStart == false){
+        if(waiting == 1 && client1Ready == false){
             int x = cursorxToWorldx(mouseEvent.getX());
             int y = cursoryToWorldy(mouseEvent.getY());
             if(y >= world.HEIGHT){
@@ -516,25 +437,6 @@ public class ClientWorldScreen implements Screen {
                     }
                 }
             }
-            // else{
-            //     Thing temp = this.world.get(x, y);
-            //     // if(temp.getName().equals(CreatureAttribute.FLOOR)){                
-            //     if(temp.getName() == CreatureAttribute.FLOOR){     
-            //         if(this.shop != null && cost >= shop.cost()){
-            //             switch(this.shop){
-            //                 case Lancer:
-            //                     First f = new First(world, x, y, CreatureAttribute.REDTEAM);
-            //                     world.getRed().add(f);
-            //                     break;
-            //                 case Archer:
-            //                     Second s = new Second(world, x, y, CreatureAttribute.REDTEAM);
-            //                     world.getRed().add(s);
-            //                     break;
-            //             }
-            //             cost -= shop.cost();
-            //         }
-            //     }
-            // }
         }
         return this;
     }
@@ -601,22 +503,8 @@ public class ClientWorldScreen implements Screen {
             case "Dead":this.handleDead(Process);break;
             case "Ready":this.handleReady(Process);break;
             case "Client":this.handleClient(Process[1]);break;
+            case "Finish":this.handleFinish(Process[1]);break;
         }
-        // if(Process[0].equals("Create")){
-        //     this.handleCreate(Process);
-        // }
-        // else if(Process[0].equals("Move")){
-        //     this.handleMove(Process);
-        // }
-        // else if(Process[0].equals("Attack")){
-        //     this.handleAttack(Process);
-        // }
-        // else if(Process[0].equals("Dead")){
-        //     this.handleDead(Process);
-        // }
-        // else if(Process[0].equals("Ready")){
-        //     this.handleReady(Process);
-        // }
     }    
 
     private void handleCreate(String[] Process){
@@ -769,29 +657,63 @@ public class ClientWorldScreen implements Screen {
                     }
                 }
             }
-            // if(Process[1].equals(CreatureAttribute.REDTEAM)){
-            //     Thing temp = world.findInRed(Integer.valueOf(Process[4])).findBullet(Integer.valueOf(Process[3]));
-            //     temp.beDead();
-            // }
-            // else{
-            //     Thing temp = world.findInBlue(Integer.valueOf(Process[4])).findBullet(Integer.valueOf(Process[3]));
-            //     temp.beDead();
-            // }
         }
     }
 
     public void handleReady(String[] Process){
         if(Process[1].equals("GameStart")){
             this.gameStart = true;
+            waiting = 2;
         }
+        else if(Process[1].equals("Client1")){
+            if(team == 1){
+                client1Ready = true;
+            }
+            else if(team == 2){
+                client2Ready = true;
+            }
+        }
+        else{
+            if(team == 1){
+                client2Ready = true;
+            }
+            else if(team == 2){
+                client1Ready = true;
+            }
+        }
+        System.out.println("team: " + team + " client1:" + client1Ready + " client2:" + client2Ready);
     }
 
     public void handleClient(String client){
         if(client.equals("client1")){
-            this.team = true;
+            if(this.team == 0)
+                this.team = 1;
+            waiting = 0;
         }
         else{
-            this.team = false;
+            if(this.team == 0)
+                this.team = 2;
+            waiting = 1;
+        }
+        // System.out.println("team" + team);
+    }
+
+    public void handleFinish(String result){
+        if(this.team == 1){
+            if(result.equals("RedTeamWin")){
+                finish = 1;
+            }
+            else{
+                finish = 2;
+            }
+        }
+        else if(team == 2){
+            if(result.equals("RedTeamWin")){
+                finish = 2;
+            }
+            else{
+                finish = 1;
+            }
         }
     }
 }

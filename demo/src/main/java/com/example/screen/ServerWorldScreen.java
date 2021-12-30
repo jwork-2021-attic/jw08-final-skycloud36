@@ -202,14 +202,14 @@ public class ServerWorldScreen implements Screen {
                 break;
         }
     }
-    public Screen Finish() {
+    public String Finish() {
         if(gameStart == true){
             if (this.world.getBlue().size() == 0) {
                 gameStart = false;
-                return new WinScreen();
+                return "Finish RedTeamWin";
             } else if (this.world.getRed().size() == 0) {
                 gameStart = false;
-                return new LoseScreen();
+                return "Finish BlueTeamWin";
             }
         }
         return null;
@@ -433,6 +433,8 @@ public class ServerWorldScreen implements Screen {
         if(client1Ready && client2Ready){
             gameStart();
             server.writeToClient("Ready GameStart");
+            client1Ready = false;
+            client2Ready = false;
         }
     }
 

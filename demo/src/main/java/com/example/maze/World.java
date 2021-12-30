@@ -127,10 +127,10 @@ public class World {
 
         this.record = record;
         this.serverworld = true;
-        // if(record == true){
-        //     // ps = new ProcessScreen(this);
-        //     this.processByThread();
-        // }
+        if(record == true){
+            // ps = new ProcessScreen(this);
+            this.processByThread();
+        }
     }
 
     public World(String file) throws IOException {
@@ -314,6 +314,7 @@ public class World {
             ps.addProcess(process);
         if(server != null){
             server.writeToClient(process);
+
         }
     }
 

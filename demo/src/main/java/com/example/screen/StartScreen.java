@@ -28,6 +28,9 @@ public class StartScreen implements Screen {
                 if(choice.equals("REPLAY GAME")){
                     return new ReplayScreen();
                 }
+                if(choice.equals("ONLINE GAME")){
+                    return new ClientWorldScreen();
+                }
                 return new WorldScreen(buttons.get(index).getButtonName());
             //     if(buttons.get(index).getButtonName() == "NEW GAME")
             //     // if(buttons.get(index).getButtonName().equals("NEW GAME"))
@@ -61,10 +64,12 @@ public class StartScreen implements Screen {
             Button b2 = new Button("RECORD GAME", 25, 23, terminal);
             Button b3 = new Button("LOAD GAME", 25, 25, terminal);
             Button b4 = new Button("REPLAY GAME", 25, 27, terminal);
+            Button b5 = new Button("ONLINE GAME", 25, 29, terminal);
             buttons.add(b1);
             buttons.add(b2);
             buttons.add(b3);
             buttons.add(b4);
+            buttons.add(b5);
         }
         for(Button b : buttons){
             b.display();
