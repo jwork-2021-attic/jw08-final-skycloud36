@@ -9,7 +9,7 @@ public class LoseScreen extends RestartScreen {
 
     @Override
     public void displayOutput(AsciiPanel terminal) {
-        terminal.write("You lose! Press enter to try again.", 25, 20, Color.GREEN);
+        terminal.write("You lose! Press enter to try again.", 25, 20, Color.RED);
     }
 
     

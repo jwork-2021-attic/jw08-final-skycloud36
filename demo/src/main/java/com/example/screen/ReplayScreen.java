@@ -93,17 +93,17 @@ public class ReplayScreen implements Screen {
     public Screen respondToUserInput(KeyEvent key) {
         try{
             switch(key.getKeyCode()){
-                case KeyEvent.VK_SPACE:
-                    this.replayAuto = false;
-                    // String process = inputStream.readLine();
-                    String process = Process.get(pindex);
-                    if(pindex < Process.size() - 1)
-                        pindex++;
-                    if(process != null)
-                        this.handleProcess(process);
+                // case KeyEvent.VK_SPACE:
+                //     this.replayAuto = false;
+                //     // String process = inputStream.readLine();
+                //     String process = Process.get(pindex);
+                //     if(pindex < Process.size() - 1)
+                //         pindex++;
+                //     if(process != null)
+                //         this.handleProcess(process);
                     
-                    // handleByThread();
-                    break;
+                //     // handleByThread();
+                //     break;
                 case KeyEvent.VK_ENTER:
                     if(replayAuto == false){
                         replayAuto = true;

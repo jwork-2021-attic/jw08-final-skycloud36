@@ -65,17 +65,17 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.example.screen.ButtonTest" name="getBackColorTest" time="0.015"/>
+  <testcase classname="com.example.screen.ButtonTest" name="getBackColorTest" time="0.016"/>
   <testcase classname="com.example.screen.ButtonTest" name="selectTest" time="0"/>
-  <testcase classname="com.example.screen.ButtonTest" name="setYlocTest" time="0.016"/>
+  <testcase classname="com.example.screen.ButtonTest" name="setYlocTest" time="0.015"/>
   <testcase classname="com.example.screen.ButtonTest" name="getYlocTest" time="0"/>
   <testcase classname="com.example.screen.ButtonTest" name="setFrontColorTest" time="0"/>
   <testcase classname="com.example.screen.ButtonTest" name="setAPTest" time="0.016"/>
   <testcase classname="com.example.screen.ButtonTest" name="getFrontColorTest" time="0"/>
   <testcase classname="com.example.screen.ButtonTest" name="unselectTest" time="0"/>
-  <testcase classname="com.example.screen.ButtonTest" name="setBackColorTest" time="0.015"/>
+  <testcase classname="com.example.screen.ButtonTest" name="setBackColorTest" time="0.016"/>
   <testcase classname="com.example.screen.ButtonTest" name="setButtonNameTest" time="0"/>
   <testcase classname="com.example.screen.ButtonTest" name="setXlocTest" time="0"/>
   <testcase classname="com.example.screen.ButtonTest" name="getXlocTest" time="0"/>
-  <testcase classname="com.example.screen.ButtonTest" name="getButtonNameTest" time="0.016"/>
+  <testcase classname="com.example.screen.ButtonTest" name="getButtonNameTest" time="0.015"/>
 </testsuite>

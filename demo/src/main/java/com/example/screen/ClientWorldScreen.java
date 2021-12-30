@@ -531,13 +531,17 @@ public class ClientWorldScreen implements Screen {
         else if(Process[2].equals(CreatureAttribute.BULLET)){
             if(Process[1].equals(CreatureAttribute.REDTEAM)){
                 Thing owner = world.findInRed(Integer.valueOf(Process[8]));
-                Bullet temp = new Bullet(owner, Integer.valueOf(Process[4]), Integer.valueOf(Process[5]), Integer.valueOf(Process[3]));
-                owner.addBullet(temp);
+                if(owner != null){
+                    Bullet temp = new Bullet(owner, Integer.valueOf(Process[4]), Integer.valueOf(Process[5]), Integer.valueOf(Process[3]));
+                    owner.addBullet(temp);
+                }
             }
             else{
                 Thing owner = world.findInBlue(Integer.valueOf(Process[8]));
-                Bullet temp = new Bullet(owner, Integer.valueOf(Process[4]), Integer.valueOf(Process[5]), Integer.valueOf(Process[3]));
-                owner.addBullet(temp);
+                if(owner != null){
+                    Bullet temp = new Bullet(owner, Integer.valueOf(Process[4]), Integer.valueOf(Process[5]), Integer.valueOf(Process[3]));
+                    owner.addBullet(temp);
+                }
             }
         }
     }

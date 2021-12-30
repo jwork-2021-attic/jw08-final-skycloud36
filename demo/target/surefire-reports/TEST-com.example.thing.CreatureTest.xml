@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="30" failures="0" name="com.example.thing.CreatureTest" time="0.988" errors="0" skipped="0">
+<testsuite tests="30" failures="0" name="com.example.thing.CreatureTest" time="1.031" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="D:\Program Files\Java\jdk1.8.0_231\jre\bin"/>
@@ -90,8 +90,8 @@
   <testcase classname="com.example.thing.CreatureTest" name="moveDownTest" time="0"/>
   <testcase classname="com.example.thing.CreatureTest" name="getCodeTest" time="0"/>
   <testcase classname="com.example.thing.CreatureTest" name="ifSelectedTest" time="0"/>
-  <testcase classname="com.example.thing.CreatureTest" name="moveLeftTest" time="0"/>
-  <testcase classname="com.example.thing.CreatureTest" name="timeToAttackTest" time="0.988"/>
+  <testcase classname="com.example.thing.CreatureTest" name="moveLeftTest" time="0.016"/>
+  <testcase classname="com.example.thing.CreatureTest" name="timeToAttackTest" time="1.015"/>
   <testcase classname="com.example.thing.CreatureTest" name="setxPosTest" time="0"/>
   <testcase classname="com.example.thing.CreatureTest" name="getXTest" time="0"/>
   <testcase classname="com.example.thing.CreatureTest" name="getYTest" time="0"/>

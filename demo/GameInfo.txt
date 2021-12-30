@@ -1,3 +1,15 @@
-First 20 6 RedTeam 0 200
-First 17 12 RedTeam 1 200
-First 36 14 BlueTeam 0 200
+Second 27 22 RedTeam 0 100
+Bullet 61 21 RedTeam 0 1 0 0
+Bullet 58 21 RedTeam 1 1 0 0
+Second 22 22 RedTeam 1 100
+Bullet 30 22 RedTeam 8 1 0 1
+Second 21 22 RedTeam 2 100
+Bullet 29 22 RedTeam 10 1 0 2
+First 34 22 RedTeam 3 200
+First 35 22 RedTeam 4 120
+Second 70 23 BlueTeam 0 100
+Second 70 21 BlueTeam 1 100
+Second 70 22 BlueTeam 2 100
+Bullet 50 22 BlueTeam 4 -1 0 2
+Bullet 62 22 BlueTeam 9 -1 0 2
+First 37 22 BlueTeam 3 100

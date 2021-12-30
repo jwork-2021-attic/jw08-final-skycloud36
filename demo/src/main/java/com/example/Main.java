@@ -24,6 +24,7 @@ import javax.swing.JTextArea;
 import com.example.maze.MazeGenerator;
 import com.example.maze.World;
 import com.example.screen.ClientWorldScreen;
+import com.example.screen.ReplayScreen;
 import com.example.screen.Screen;
 import com.example.screen.StartScreen;
 import com.example.screen.WorldScreen;
@@ -90,6 +91,18 @@ public class Main extends JFrame implements KeyListener, MouseListener {
         }
         if(screen instanceof ClientWorldScreen){
             Screen temp = ((ClientWorldScreen)screen).Finish();
+            if(temp != null){    
+                super.repaint();
+                screen = temp;
+                try {
+                    TimeUnit.MILLISECONDS.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        if(screen instanceof ReplayScreen){
+            Screen temp = ((ReplayScreen)screen).Finish();
             if(temp != null){    
                 super.repaint();
                 screen = temp;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="10" failures="0" name="com.example.thing.SecondTest" time="1.015" errors="0" skipped="0">
+<testsuite tests="10" failures="0" name="com.example.thing.SecondTest" time="1.004" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="D:\Program Files\Java\jdk1.8.0_231\jre\bin"/>
@@ -67,7 +67,7 @@
   </properties>
   <testcase classname="com.example.thing.SecondTest" name="getInfoTest" time="0"/>
   <testcase classname="com.example.thing.SecondTest" name="attackTest" time="0"/>
-  <testcase classname="com.example.thing.SecondTest" name="timeToAttack" time="1.015"/>
+  <testcase classname="com.example.thing.SecondTest" name="timeToAttack" time="1.004"/>
   <testcase classname="com.example.thing.SecondTest" name="moveWithHandleTest" time="0"/>
   <testcase classname="com.example.thing.SecondTest" name="beAttackedTest" time="0"/>
   <testcase classname="com.example.thing.SecondTest" name="findBulletTest" time="0"/>
