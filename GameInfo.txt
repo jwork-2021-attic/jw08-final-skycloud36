@@ -1,0 +1,13 @@
+Second 14 18 RedTeam 0 100
+Second 14 19 RedTeam 1 100
+First 27 19 RedTeam 2 200
+First 71 19 RedTeam 3 200
+First 30 18 RedTeam 4 70
+Second 70 19 BlueTeam 0 10
+Second 70 17 BlueTeam 1 100
+Second 70 18 BlueTeam 2 100
+Bullet 5 17 BlueTeam 6 -1 0 2
+Bullet 40 18 BlueTeam 10 -1 0 2
+Bullet 51 18 BlueTeam 12 -1 0 2
+Bullet 62 18 BlueTeam 13 -1 0 2
+First 31 18 BlueTeam 3 100
